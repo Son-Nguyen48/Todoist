@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-[#DE483A] h-[44px] px-[18px] flex justify-between">
-    <div class="flex h-full items-center pl-[]">
+  <div class="bg-[#DE483A] h-[44px] px-[18px] flex justify-between fixed z-20 w-full">
+    <div class="flex h-full items-center">
       <button class="hover:bg-[#b9453b] p-1 rounded-md">
         <svg class="menu_icon" width="24" height="24" viewBox="0 0 24 24">
           <path
@@ -123,7 +123,7 @@
 
     <div class="flex items-center gap-2">
       <button
-        class="flex gap-1 hover:bg-[#B03D32] bg-[#E37065] py-1 px-2 rounded-md text-[13px] text-white"
+        class="upgrade_pro relative flex gap-1 hover:bg-[#B03D32] bg-[#E37065] py-1 px-2 rounded-md text-[13px] text-white"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
           <g fill="none" fill-rule="evenodd">
@@ -151,7 +151,7 @@
         </svg>
       </button>
 
-      <button class="flex gap-1">
+      <button class="flex gap-1 hover:bg-[#B03D32] py-1 px-2 rounded-md">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -172,10 +172,10 @@
             </g>
           </g>
         </svg>
-        <span class="text-white">0/5</span>
+        <span class="text-white text-[13px]">0/5</span>
       </button>
 
-      <button>
+      <button class="hover:bg-[#B03D32] p-1 rounded-md">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -192,7 +192,7 @@
         </svg>
       </button>
 
-      <button>
+      <button class="hover:bg-[#B03D32] p-1 rounded-md">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -209,11 +209,7 @@
       </button>
 
       <button>
-        <img
-          class="w-7 h-7 rounded-full"
-          src="../../assets/2018-vs-fashion-show-elsa-hosk-fantasy-bra-tout.jpg"
-          alt=""
-        />
+        <img class="w-7 h-7 rounded-full" src="https://f4.bcbits.com/img/a3724985569_65" alt="" />
       </button>
     </div>
   </div>

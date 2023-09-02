@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-screen w-[305px] bg-[#FAFAFA] px-[18px] pt-[30px] overflow-y-auto flex flex-col gap-4"
+    class="h-screen w-[305px] fixed z-10 bg-[#FAFAFA] px-[18px] pt-[30px] overflow-y-auto flex flex-col gap-4"
   >
     <ul>
       <li class="w-full flex hover:bg-[#EEEEEE] rounded-md cursor-pointer">
@@ -152,7 +152,7 @@
         </button>
       </li>
       <li class="project flex hover:bg-[#EEEEEE] items-center gap-1 rounded-md">
-        <RouterLink class="p-[5px] w-full flex gap-2 items-center" to="/project">
+        <RouterLink class="p-[5px] w-full flex gap-2 items-center" to="/project-1">
           <span class="w-2 h-2 bg-[#14AAF5] rounded-full"></span>
           <span>Great Goal</span>
         </RouterLink>
@@ -169,7 +169,7 @@
         </button>
       </li>
       <li class="project flex hover:bg-[#EEEEEE] items-center gap-1 rounded-md">
-        <RouterLink class="p-[5px] w-full flex gap-2 items-center" to="/project">
+        <RouterLink class="p-[5px] w-full flex gap-2 items-center" to="/project-2">
           <span class="w-2 h-2 bg-[#6ACCBC] rounded-full"></span>
           <span>Second Plan</span>
         </RouterLink>

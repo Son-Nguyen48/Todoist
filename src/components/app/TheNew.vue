@@ -1,6 +1,6 @@
 <template>
   <TheHeader />
-  <div class="flex">
+  <div class="flex pt-[44px]">
     <TheMenu />
     <p>Upcoming</p>
   </div>

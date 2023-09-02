@@ -31,7 +31,7 @@
     </RouterLink>
     <div class="flex gap-5">
       <div class="w-1/2 flex gap-4 flex-col">
-        <h1 class="text-[32px] font-bold">Inscription</h1>
+        <h1 class="text-[32px] font-bold">Login</h1>
         <div class="h-2"></div>
         <ul class="flex flex-col gap-3">
           <li
