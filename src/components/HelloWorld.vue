@@ -1,5 +1,4 @@
 <script setup>
-import { RouterLink } from 'vue-router'
 import { useMenuStore } from '../stores/menu'
 import { computed } from 'vue'
 const menuStore = useMenuStore()

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div>
+  <div class="flex justify-between px-6 border-[1px] lg:border-none h-[72px]">
+    <RouterLink to="/" class="pt-[18px]">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 128 32"
@@ -28,8 +28,26 @@
           ></path>
         </g>
       </svg>
-    </div>
+    </RouterLink>
+
+    <button class="w-9 h-9 flex justify-center items-center lg:hidden">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="#000000"
+        viewBox="0 0 256 256"
+      >
+        <path
+          d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"
+        ></path>
+      </svg>
+    </button>
+    <TheMenu />
   </div>
+  <RouterView />
 </template>
 
-<script setup></script>
+<script setup>
+import TheMenu from './TheMenu.vue'
+</script>
