@@ -24,7 +24,7 @@
               <span class="text-[14px]">View</span>
               <div
                 v-if="isViewControlOpen"
-                class="absolute -bottom-44 -left-full w-[300px] px-3 shadow-lg rounded-md z-30 bg-white py-[6px]"
+                class="absolute -bottom-48 -left-[200px] w-[300px] px-3 shadow-lg rounded-md z-30 bg-white py-[6px]"
               >
                 <ul class="w-full">
                   <li class="py-1">
@@ -221,7 +221,7 @@
               </svg>
               <div
                 v-if="isActionControlOpen"
-                class="absolute -bottom-72 -left-52 w-[300px] px-3 shadow-lg rounded-md z-30 bg-white py-[6px]"
+                class="absolute -bottom-[280px] -left-[250px] w-[300px] px-3 shadow-lg rounded-md z-30 bg-white py-[6px]"
               >
                 <ul class="w-full">
                   <li class="py-1">
