@@ -2,7 +2,7 @@
   <TheHeader />
   <div class="flex pt-[44px]">
     <TheMenu />
-    <p>Upcoming</p>
+    <p class="ml-[305px]">Upcoming</p>
   </div>
 </template>
 

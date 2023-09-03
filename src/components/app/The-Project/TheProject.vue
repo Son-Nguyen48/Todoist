@@ -2,7 +2,7 @@
   <TheHeader />
   <div class="flex pt-[44px]">
     <TheMenu />
-    <p>Project</p>
+    <p class="ml-[305px]">Project</p>
     <component :is="fullPath !== 'project' ? ProjectDetail : null"></component>
   </div>
 </template>
