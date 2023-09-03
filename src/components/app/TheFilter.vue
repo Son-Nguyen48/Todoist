@@ -2,7 +2,7 @@
   <TheHeader />
   <div class="flex pt-[44px]">
     <TheMenu />
-    <p>Filter</p>
+    <p class="ml-[305px]">Filter</p>
   </div>
 </template>
 
