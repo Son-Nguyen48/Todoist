@@ -6,7 +6,7 @@
       <li class="w-full flex hover:bg-[#EEEEEE] rounded-md cursor-pointer">
         <RouterLink
           class="text-[14px] active:bg-[#EEEEEE] w-full flex flex-1 p-[5px] gap-[5px]"
-          to="/inbox"
+          :to="{ name: 'app-inbox' }"
         >
           <span>
             <svg
@@ -33,7 +33,7 @@
       <li class="w-full flex hover:bg-[#EEEEEE] rounded-md cursor-pointer">
         <RouterLink
           class="flex flex-1 gap-[5px] text-[14px] p-[5px] active:bg-[#EEEEEE] w-full"
-          to="/today"
+          :to="{ name: 'app-today' }"
         >
           <span>
             <svg
@@ -70,7 +70,7 @@
       <li class="w-full flex hover:bg-[#EEEEEE] rounded-md cursor-pointer">
         <RouterLink
           class="flex flex-1 gap-[5px] p-[5px] text-[14px] active:bg-[#EEEEEE] w-full"
-          to="/upcoming"
+          :to="{ name: 'app-upcoming' }"
         >
           <span>
             <svg
@@ -97,7 +97,7 @@
       <li class="w-full flex hover:bg-[#EEEEEE] rounded-md cursor-pointer">
         <RouterLink
           class="flex flex-1 gap-[5px] text-[14px] p-[5px] active:bg-[#EEEEEE] w-full"
-          to="/filters-and-labels"
+          :to="{ name: 'app-filters-labels' }"
         >
           <span>
             <svg
