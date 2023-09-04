@@ -11,7 +11,7 @@
           ></path>
         </svg>
       </button>
-      <RouterLink to="/app" class="hover:bg-[#b9453b] p-1 rounded-md">
+      <RouterLink :to="{ name: 'app-today' }" class="hover:bg-[#b9453b] p-1 rounded-md">
         <svg
           width="24"
           height="24"

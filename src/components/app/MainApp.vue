@@ -2,7 +2,7 @@
   <TheHeader />
   <div class="flex pt-[44px]">
     <TheMenu />
-    <div class="pt-[34px] ml-[305px] w-full">
+    <!-- <div class="pt-[34px] ml-[305px] w-full">
       <div class="mx-[75.5px] px-[55px] pb-[72px]">
         <div class="flex">
           <h1 class="text-[20px] font-bold pr-2">Today</h1>
@@ -535,37 +535,15 @@
           class="add_section_btn before:hidden after:hidden before:content-[''] relative w-full before:w-full before:h-[1px] before:bg-[#DE483A] before:absolute before:top-3 before:left-0 after:h-6 after:w-[100px] after:content-['Add_section'] after:text-[#DE483A] after:font-semibold after:bg-white after:absolute rounded-sm after:transform after:-translate-x-1/2 py-6 after:-translate-y-full"
         ></button>
       </div>
-    </div>
+    </div> -->
+    <RouterView />
   </div>
 </template>
 
 <script setup>
 import TheHeader from './TheHeader.vue'
 import TheMenu from './TheMenu.vue'
-import { ref } from 'vue'
-const isViewControlOpen = ref(false)
+import { RouterView } from 'vue-router'
+// import { ref } from 'vue'
+// const isViewControlOpen = ref(false)
 </script>
-
-<style scoped>
-#goal_1:hover .drag_button {
-  display: block;
-}
-#goal_1:hover .goal_control {
-  display: flex;
-}
-
-button.add_section_btn:hover::before,
-button.add_section_btn:hover::after {
-  display: inline;
-}
-
-button.add_task_hover:hover .add_task_btn {
-  background: #de483a;
-}
-button.add_task_hover:hover .add_task_btn svg {
-  color: white;
-}
-button.add_task_hover:hover .add_task_title {
-  color: #de483a;
-}
-</style>

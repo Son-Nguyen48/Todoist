@@ -31,7 +31,34 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../components/app/MainApp.vue')
+      component: () => import('../components/app/MainApp.vue'),
+      children: [
+        {
+          path: 'inbox',
+          name: 'app-inbox',
+          component: () => import('../components/app/TheInbox.vue')
+        },
+        {
+          path: 'upcoming',
+          name: 'app-upcoming',
+          component: () => import('../components/app/TheNew.vue')
+        },
+        {
+          path: 'filters-labels',
+          name: 'app-filters-labels',
+          component: () => import('../components/app/TheFilter.vue')
+        },
+        {
+          path: 'project',
+          name: 'app-project',
+          component: () => import('../components/app/The-Project/TheProject.vue')
+        },
+        {
+          path: 'today',
+          name: 'app-today',
+          component: () => import('../components/app/TheToday.vue')
+        }
+      ]
     },
     {
       path: '/inbox',
