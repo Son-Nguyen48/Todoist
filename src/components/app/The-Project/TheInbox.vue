@@ -1,7 +1,7 @@
 <template>
-  <div class="pt-[34px] ml-[305px] w-full">
+  <div class="pt-[34px] ml-[305px] w-full relative">
     <div class="mx-[75.5px] px-[55px] pb-[72px]">
-      <TheHeader />
+      <TheHeader :idProject="route.params.idProject" :idTask="route.params.idTask" />
       <div class="mt-5">
         <ul>
           <li
@@ -28,7 +28,10 @@
               </svg>
             </button>
 
-            <div class="flex w-full">
+            <RouterLink
+              :to="{ name: 'project-task-detail', params: { idTask: '1234' } }"
+              class="flex w-full"
+            >
               <div>
                 <p>Say hello to my friend!</p>
                 <div class="flex items-center gap-2">
@@ -112,7 +115,7 @@
                   </svg>
                 </button>
               </div>
-            </div>
+            </RouterLink>
           </li>
           <hr />
           <li
@@ -239,10 +242,8 @@
           </span>
           <span class="add_task_title text-[grey] text-[14px]">Add task</span>
         </button>
+        <AddSection />
       </div>
-      <button
-        class="add_section_btn before:hidden after:hidden before:content-[''] relative w-full before:w-full before:h-[1px] before:bg-[#DE483A] before:absolute before:top-3 before:left-0 after:h-6 after:w-[100px] after:content-['Add_section'] after:text-[#DE483A] after:font-semibold after:bg-white after:absolute rounded-sm after:transform after:-translate-x-1/2 py-6 after:-translate-y-full"
-      ></button>
       <section class="pb-5">
         <h2 class="font-medium pb-1">New Section</h2>
         <hr />
@@ -258,10 +259,8 @@
           </span>
           <span class="add_task_title text-[grey] text-[14px]">Add task</span>
         </button>
+        <AddSection />
       </section>
-      <button
-        class="add_section_btn before:hidden after:hidden before:content-[''] relative w-full before:w-full before:h-[1px] before:bg-[#DE483A] before:absolute before:top-3 before:left-0 after:h-6 after:w-[100px] after:content-['Add_section'] after:text-[#DE483A] after:font-semibold after:bg-white after:absolute rounded-sm after:transform after:-translate-x-1/2 py-6 after:-translate-y-full"
-      ></button>
       <section>
         <h2 class="font-medium pb-1">New Section</h2>
         <hr />
@@ -277,16 +276,18 @@
           </span>
           <span class="add_task_title text-[grey] text-[14px]">Add task</span>
         </button>
+        <AddSection />
       </section>
-      <button
-        class="add_section_btn before:hidden after:hidden before:content-[''] relative w-full before:w-full before:h-[1px] before:bg-[#DE483A] before:absolute before:top-3 before:left-0 after:h-6 after:w-[100px] after:content-['Add_section'] after:text-[#DE483A] after:font-semibold after:bg-white after:absolute rounded-sm after:transform after:-translate-x-1/2 py-6 after:-translate-y-full"
-      ></button>
+      <RouterView />
     </div>
   </div>
 </template>
 
 <script setup>
-import TheHeader from '../UI/TheHeader.vue'
+import AddSection from '../../UI/The-button/AddSection.vue'
+import TheHeader from '../../UI/TheHeader.vue'
+import { useRoute, RouterView } from 'vue-router'
+const route = useRoute()
 </script>
 
 <style scoped>

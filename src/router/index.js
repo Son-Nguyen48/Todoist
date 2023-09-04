@@ -33,11 +33,11 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../components/app/MainApp.vue'),
       children: [
-        {
-          path: 'inbox',
-          name: 'app-inbox',
-          component: () => import('../components/app/TheInbox.vue')
-        },
+        // {
+        //   path: 'inbox',
+        //   name: 'app-inbox',
+        //   component: () => import('../components/app/TheInbox.vue')
+        // },
         {
           path: 'upcoming',
           name: 'app-upcoming',
@@ -47,6 +47,18 @@ const router = createRouter({
           path: 'filters-labels',
           name: 'app-filters-labels',
           component: () => import('../components/app/TheFilter.vue')
+        },
+        {
+          path: 'project/:idProject',
+          name: 'app-inbox',
+          component: () => import('../components/app/The-Project/TheInbox.vue'),
+          children: [
+            {
+              path: 'task/:idTask',
+              name: 'project-task-detail',
+              component: () => import('../components/UI/Modal/TheTask.vue')
+            }
+          ]
         },
         {
           path: 'project',
@@ -59,14 +71,6 @@ const router = createRouter({
           component: () => import('../components/app/TheToday.vue')
         }
       ]
-    },
-    {
-      path: '/inbox',
-      name: 'inbox',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../components/app/TheInbox.vue')
     },
     {
       path: '/today',
