@@ -73,17 +73,16 @@ const router = createRouter({
         {
           path: 'today',
           name: 'app-today',
-          component: () => import('../components/app/TheToday.vue')
+          component: () => import('../components/app/TheToday.vue'),
+          children: [
+            {
+              path: 'task/:idTask',
+              name: 'today-task-detail',
+              component: () => import('../components/app/TodayTask.vue')
+            }
+          ]
         }
       ]
-    },
-    {
-      path: '/today',
-      name: 'today',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../components/app/MainApp.vue')
     },
     {
       path: '/upcoming',

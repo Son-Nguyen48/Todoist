@@ -145,7 +145,10 @@
               </svg>
             </button>
 
-            <div class="flex w-full">
+            <RouterLink
+              :to="{ name: 'project-task-detail', params: { idTask: '12345' } }"
+              class="flex w-full"
+            >
               <div>
                 <p>This is our goal! So play with it!</p>
                 <div class="flex items-center gap-2">
@@ -203,7 +206,7 @@
                 </button>
 
                 <RouterLink
-                  :to="{ name: 'project-task-detail', params: { idTask: '1234' } }"
+                  :to="{ name: 'project-task-detail', params: { idTask: '12345' } }"
                   class="hover:bg-[#f5f5f5] rounded-sm"
                 >
                   <svg
@@ -232,7 +235,7 @@
                   </svg>
                 </button>
               </div>
-            </div>
+            </RouterLink>
           </li>
           <hr />
         </ul>
