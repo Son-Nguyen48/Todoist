@@ -128,7 +128,7 @@
     </ul>
     <ul class="favorite_panel">
       <li class="flex hover:bg-[#EEEEEE] items-center gap-1 rounded-md">
-        <RouterLink class="p-[5px] w-full font-medium" to="/favorite">Favorites</RouterLink>
+        <p class="p-[5px] w-full font-medium">Favorites</p>
         <button
           class="favorite_control hidden p-2 items-center justify-center w-7 h-7 rounded-md hover:bg-[#f5f5f5]"
         >
@@ -141,7 +141,10 @@
         </button>
       </li>
       <li class="favorite flex hover:bg-[#EEEEEE] items-center gap-1 rounded-md">
-        <RouterLink class="p-[5px] w-full flex gap-2 items-center" to="/project-1">
+        <RouterLink
+          class="p-[5px] w-full flex gap-2 items-center"
+          :to="{ name: 'app-inbox', params: { idProject: '123' } }"
+        >
           <span>
             <svg width="24" height="24" viewBox="0 0 24 24">
               <path
@@ -191,7 +194,10 @@
         </button>
       </li>
       <li class="project flex hover:bg-[#EEEEEE] items-center gap-1 rounded-md">
-        <RouterLink class="p-[5px] w-full flex gap-2 items-center" to="/project-1">
+        <RouterLink
+          class="p-[5px] w-full flex gap-2 items-center"
+          :to="{ name: 'app-inbox', params: { idProject: '123' } }"
+        >
           <span class="w-2 h-2 bg-[#14AAF5] rounded-full"></span>
           <span>Great Goal</span>
         </RouterLink>
@@ -208,7 +214,10 @@
         </button>
       </li>
       <li class="project flex hover:bg-[#EEEEEE] items-center gap-1 rounded-md">
-        <RouterLink class="p-[5px] w-full flex gap-2 items-center" to="/project-2">
+        <RouterLink
+          class="p-[5px] w-full flex gap-2 items-center"
+          :to="{ name: 'app-inbox', params: { idProject: '1234' } }"
+        >
           <span class="w-2 h-2 bg-[#6ACCBC] rounded-full"></span>
           <span>Second Plan</span>
         </RouterLink>
