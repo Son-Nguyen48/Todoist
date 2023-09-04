@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-[34px] ml-[305px] w-full">
+  <div class="pt-[34px] ml-[305px] w-full relative">
     <div class="mx-[75.5px] px-[55px] pb-[72px]">
       <TheHeader />
       <div class="mt-5">
@@ -37,7 +37,10 @@
               </svg>
             </button>
 
-            <div class="flex w-full">
+            <RouterLink
+              :to="{ name: 'today-task-detail', params: { idTask: '123' } }"
+              class="flex w-full"
+            >
               <div>
                 <p>Say hello to my friend!</p>
                 <div class="flex items-center gap-2">
@@ -94,7 +97,10 @@
                   </svg>
                 </button>
 
-                <RouterLink to="/comments" class="hover:bg-[#f5f5f5] rounded-sm">
+                <RouterLink
+                  :to="{ name: 'today-task-detail', params: { idTask: '123' } }"
+                  class="hover:bg-[#f5f5f5] rounded-sm"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -121,7 +127,7 @@
                   </svg>
                 </button>
               </div>
-            </div>
+            </RouterLink>
           </li>
           <hr />
           <li
@@ -148,7 +154,10 @@
               </svg>
             </button>
 
-            <div class="flex w-full">
+            <RouterLink
+              :to="{ name: 'today-task-detail', params: { idTask: '123' } }"
+              class="flex w-full"
+            >
               <div>
                 <p>This is our goal! So play with it!</p>
                 <div class="flex items-center gap-2">
@@ -205,7 +214,10 @@
                   </svg>
                 </button>
 
-                <RouterLink to="/comments" class="hover:bg-[#f5f5f5] rounded-sm">
+                <RouterLink
+                  :to="{ name: 'today-task-detail', params: { idTask: '1234' } }"
+                  class="hover:bg-[#f5f5f5] rounded-sm"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -232,7 +244,7 @@
                   </svg>
                 </button>
               </div>
-            </div>
+            </RouterLink>
           </li>
           <hr />
         </ul>
@@ -291,10 +303,12 @@
         class="add_section_btn before:hidden after:hidden before:content-[''] relative w-full before:w-full before:h-[1px] before:bg-[#DE483A] before:absolute before:top-3 before:left-0 after:h-6 after:w-[100px] after:content-['Add_section'] after:text-[#DE483A] after:font-semibold after:bg-white after:absolute rounded-sm after:transform after:-translate-x-1/2 py-6 after:-translate-y-full"
       ></button>
     </div>
+    <RouterView />
   </div>
 </template>
 
 <script setup>
+import { RouterLink, RouterView } from 'vue-router'
 import TheHeader from '../UI/TheHeader.vue'
 </script>
 
