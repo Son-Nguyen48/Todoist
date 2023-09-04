@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, defineProps } from 'vue'
 import { useRoute } from 'vue-router'
 import TheInbox from './The-header/TheInbox.vue'
 import TheToday from './The-header/TheToday.vue'
@@ -12,10 +12,12 @@ const comps = {
   TheInbox,
   TheToday
 }
+
+const props = defineProps(['id'])
 const components = [
   {
     id: 1,
-    name: '/app/inbox',
+    name: `/app/project/${props.id}`,
     component: 'TheInbox'
   },
   {
