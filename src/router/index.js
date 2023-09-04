@@ -49,9 +49,16 @@ const router = createRouter({
           component: () => import('../components/app/TheFilter.vue')
         },
         {
-          path: 'project/:id',
+          path: 'project/:idProject',
           name: 'app-inbox',
-          component: () => import('../components/app/The-Project/TheInbox.vue')
+          component: () => import('../components/app/The-Project/TheInbox.vue'),
+          children: [
+            {
+              path: 'task/:idTask',
+              name: 'project-task-detail',
+              component: () => import('../components/UI/Modal/TheTask.vue')
+            }
+          ]
         },
         {
           path: 'project',

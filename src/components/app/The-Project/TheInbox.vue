@@ -1,7 +1,7 @@
 <template>
-  <div class="pt-[34px] ml-[305px] w-full">
+  <div class="pt-[34px] ml-[305px] w-full relative">
     <div class="mx-[75.5px] px-[55px] pb-[72px]">
-      <TheHeader :id="route.params.id" />
+      <TheHeader :idProject="route.params.idProject" :idTask="route.params.idTask" />
       <div class="mt-5">
         <ul>
           <li
@@ -28,7 +28,10 @@
               </svg>
             </button>
 
-            <div class="flex w-full">
+            <RouterLink
+              :to="{ name: 'project-task-detail', params: { idTask: '1234' } }"
+              class="flex w-full"
+            >
               <div>
                 <p>Say hello to my friend!</p>
                 <div class="flex items-center gap-2">
@@ -112,7 +115,7 @@
                   </svg>
                 </button>
               </div>
-            </div>
+            </RouterLink>
           </li>
           <hr />
           <li
@@ -275,6 +278,7 @@
         </button>
         <AddSection />
       </section>
+      <RouterView />
     </div>
   </div>
 </template>
@@ -282,7 +286,7 @@
 <script setup>
 import AddSection from '../../UI/The-button/AddSection.vue'
 import TheHeader from '../../UI/TheHeader.vue'
-import { useRoute } from 'vue-router'
+import { useRoute, RouterView } from 'vue-router'
 const route = useRoute()
 </script>
 
