@@ -57,6 +57,11 @@ const router = createRouter({
               path: 'task/:idTask',
               name: 'project-task-detail',
               component: () => import('../components/UI/Modal/TheTask.vue')
+            },
+            {
+              path: 'comments',
+              name: 'project-comments',
+              component: () => import('../components/UI/Modal/TheComments.vue')
             }
           ]
         },

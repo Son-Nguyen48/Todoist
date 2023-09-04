@@ -180,7 +180,10 @@
           </ul>
         </div>
       </button>
-      <RouterLink to="/comments" class="flex gap-1 hover:bg-[#f5f5f5] rounded-md px-3 py-1">
+      <RouterLink
+        :to="{ name: 'project-comments' }"
+        class="flex gap-1 hover:bg-[#f5f5f5] rounded-md px-3 py-1"
+      >
         <span>
           <svg
             xmlns="http://www.w3.org/2000/svg"

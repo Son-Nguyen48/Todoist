@@ -88,7 +88,10 @@
                   </svg>
                 </button>
 
-                <RouterLink to="/comments" class="hover:bg-[#f5f5f5] rounded-sm">
+                <RouterLink
+                  :to="{ name: 'project-task-detail', params: { idTask: '1234' } }"
+                  class="hover:bg-[#f5f5f5] rounded-sm"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -199,7 +202,10 @@
                   </svg>
                 </button>
 
-                <RouterLink to="/comments" class="hover:bg-[#f5f5f5] rounded-sm">
+                <RouterLink
+                  :to="{ name: 'project-task-detail', params: { idTask: '1234' } }"
+                  class="hover:bg-[#f5f5f5] rounded-sm"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
