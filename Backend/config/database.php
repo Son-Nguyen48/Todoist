@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "todolist";
+$database = "newtodoist";
 $connection = null;
 
 

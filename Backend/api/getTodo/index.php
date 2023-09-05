@@ -6,7 +6,7 @@ include_once('../../model/Todo.php');
 
 $todo = new Todo($connection);
 $todo->id = isset($_GET['id']) ? $_GET['id'] : die();
-$todo->getTodo();
+$todo->getTaskDetail();
 $todolist_item = [
     'id' => $todo->id,
     'title' => $todo->title,
