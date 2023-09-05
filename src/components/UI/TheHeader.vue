@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps } from 'vue'
+import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import TheInbox from './The-header/TheInbox.vue'
 import TheToday from './The-header/TheToday.vue'

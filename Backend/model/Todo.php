@@ -22,15 +22,15 @@ class Todo
 
     // read data 
 
-    public function readData()
+    public function getAllTask()
     {
-        $query = "SELECT * FROM todos ORDER BY id ASC";
+        $query = "SELECT * FROM task ORDER BY id ASC";
         $statement = $this->connection->prepare($query);
         $statement->execute();
         return $statement;
     }
 
-    public function getTodo()
+    public function getTaskDetail()
     {
         $query = "SELECT * FROM todos WHERE id=?";
         $statement = $this->connection->prepare($query);
