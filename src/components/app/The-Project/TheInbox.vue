@@ -187,7 +187,7 @@ const route = useRoute()
 
 let taskList = ref([])
 axios
-  .get('http://localhost:3000/Backend/api/getAllTodo/')
+  .get('https://sonnguyen48todoist.000webhostapp.com/api/getAllTask/')
   .then((response) => {
     taskList.value = response.data.taskList
   })
