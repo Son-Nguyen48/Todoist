@@ -1,6 +1,6 @@
 <template>
-  <div class="flex">
-    <h1 class="text-[20px] font-bold pr-2">Today</h1>
+  <div class="flex fixed bg-white z-20 pt-[34px] left-[350px] right-20">
+    <h1 class="text-[20px] font-bold pr-2 pl-20">Today</h1>
     <span class="text-[14px] text-[grey] leading-8">Sun 3 Sep</span>
     <div class="flex ml-auto">
       <button

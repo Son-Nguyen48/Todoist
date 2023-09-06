@@ -1,8 +1,8 @@
 <template>
-  <div class="pt-[34px] ml-[305px] w-full relative">
+  <div class="ml-[305px] w-full relative">
     <div class="mx-[75.5px] px-[55px] pb-[72px]">
       <TheHeader />
-      <div class="mt-5">
+      <div class="pt-20">
         <ul>
           <h2 class="font-medium relative pt-5 text-[14px] pb-2">
             <span class="absolute -left-7 hover:bg-[#f5f5f5] cursor-pointer rounded-md">
