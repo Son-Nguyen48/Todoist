@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed p-5 w-[750px] h-[450px] rounded-md top-1/2 left-1/2 transform -translate-x-1/4 -translate-y-1/2 z-[999] bg-white"
+    class="fixed p-5 w-[864px] h-[550px] rounded-md top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[999] bg-white"
   >
     <div class="flex items-center gap-2">
       <span>The Comments of Project</span>

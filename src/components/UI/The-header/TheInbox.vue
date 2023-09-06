@@ -1,6 +1,6 @@
 <template>
-  <div class="flex">
-    <h1 class="text-[20px] font-bold">Inbox</h1>
+  <div class="flex fixed bg-white z-20 pt-[34px] left-[350px] right-20">
+    <h1 class="text-[20px] font-bold pl-20">Inbox</h1>
     <div class="flex ml-auto">
       <button
         @click="isViewControlOpen = true"
