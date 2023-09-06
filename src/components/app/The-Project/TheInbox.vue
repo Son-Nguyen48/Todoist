@@ -298,7 +298,7 @@ let taskListInProject = ref([])
 let taskListInSection = ref([])
 let listSection = ref([])
 axios
-  .get('https://sonnguyen48todoist.000webhostapp.com/api/getAllTask/')
+  .get('https://sonnguyen48todoist.000webhostapp.com/api/getAllTaskInProject/')
   .then((response) => {
     taskListInProject.value = response.data.taskList
   })
