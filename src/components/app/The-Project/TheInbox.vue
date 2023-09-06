@@ -23,13 +23,13 @@
 
               <button
                 class="relative top-1 border-[1px] rounded-full h-5 w-5"
-                :class="priority[task.priority]"
+                :class="priorityBorder[task.priority]"
               >
                 <svg
                   width="24"
                   height="24"
                   class="text-[#E5E7EB] absolute -top-[3px] -left-[4px]"
-                  :class="priority[task.priority]"
+                  :class="priorityText[task.priority]"
                 >
                   <path
                     fill="currentColor"
@@ -301,11 +301,17 @@ import TheHeader from '../../UI/TheHeader.vue'
 import { useRoute, RouterView } from 'vue-router'
 import { ref } from 'vue'
 const route = useRoute()
-const priority = {
-  1: 'border-[#D1453B] text-[#D1453B]',
-  2: 'border-[#EB8909] text-[#EB8909]',
-  3: 'border-[#246FE0] text-[#246FE0]',
-  4: 'border-[#FFFFFF] text-[#FFFFFF]'
+const priorityBorder = {
+  1: 'border-[#D1453B] ',
+  2: 'border-[#EB8909] ',
+  3: 'border-[#246FE0] ',
+  4: 'border-[#FFFFFF] '
+}
+const priorityText = {
+  1: ' text-[#D1453B]',
+  2: ' text-[#EB8909]',
+  3: ' text-[#246FE0]',
+  4: ' text-[#FFFFFF]'
 }
 
 let taskListInProject = ref([])
