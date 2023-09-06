@@ -28,7 +28,7 @@
                 <svg
                   width="24"
                   height="24"
-                  class="text-[#E5E7EB] absolute -top-[3px] -left-[4px]"
+                  class="absolute -top-[3px] -left-[4px]"
                   :class="priorityText[task.priority]"
                 >
                   <path
