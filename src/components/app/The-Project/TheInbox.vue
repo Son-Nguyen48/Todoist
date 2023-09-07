@@ -186,8 +186,9 @@ const route = useRoute()
 let taskListInProject = ref([])
 let taskListInSection = ref([])
 let listSection = ref([])
+// http://localhost:3000/
 axios
-  .get('https://sonnguyen48todoist.000webhostapp.com/api/getAllTaskInProject/')
+  .get('http://localhost:3000/api/getAllTaskInProject/')
   .then((response) => {
     taskListInProject.value = response.data.taskList
   })
@@ -195,11 +196,11 @@ axios
     console.error(error)
   })
 
-axios.get('https://sonnguyen48todoist.000webhostapp.com/api/getAllTaskInSection/').then((res) => {
+axios.get('http://localhost:3000/api/getAllTaskInSection/').then((res) => {
   taskListInSection.value = res.data.taskList
 })
 
-axios.get('https://sonnguyen48todoist.000webhostapp.com/api/getAllSection/').then((res) => {
+axios.get('http://localhost:3000/api/getAllSection/').then((res) => {
   listSection.value = res.data.sectionList
 })
 </script>

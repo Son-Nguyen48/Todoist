@@ -1,5 +1,6 @@
 <template>
   <div class="flex gap-2 py-3">
+    <!-- Button drag and drop  -->
     <button
       class="hover:bg-[#f5f5f5] hover:cursor-move rounded-md hidden absolute -left-7 drag_button"
     >
@@ -10,7 +11,7 @@
         ></path>
       </svg>
     </button>
-
+    <!-- Priority icon button  -->
     <button
       class="relative top-1 border-[1px] rounded-full h-5 w-5"
       :class="priorityBorder[task.priority]"
@@ -27,7 +28,7 @@
         ></path>
       </svg>
     </button>
-
+    <!-- The main content  -->
     <RouterLink
       :to="{ name: 'project-task-detail', params: { idTask: task.id } }"
       class="flex w-full"
