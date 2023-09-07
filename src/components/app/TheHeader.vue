@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#DE483A] h-[44px] px-[18px] flex justify-between fixed z-20 w-full">
+  <div class="bg-[#DE483A] h-[44px] px-[18px] flex justify-between fixed z-30 w-full">
     <div class="flex h-full items-center">
       <button class="hover:bg-[#b9453b] p-1 rounded-md">
         <svg class="menu_icon" width="24" height="24" viewBox="0 0 24 24">
@@ -60,8 +60,8 @@
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
+                    width="16"
+                    height="16"
                     fill="#000000"
                     viewBox="0 0 256 256"
                   >
@@ -82,8 +82,8 @@
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
+                    width="16"
+                    height="16"
                     fill="#000000"
                     viewBox="0 0 256 256"
                   >
@@ -103,8 +103,8 @@
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
+                    width="16"
+                    height="16"
                     fill="#000000"
                     viewBox="0 0 256 256"
                   >

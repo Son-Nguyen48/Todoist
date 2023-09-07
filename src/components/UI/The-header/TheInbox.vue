@@ -198,6 +198,7 @@
             ></path>
           </svg>
         </span>
+        <!-- <span id="comment_of_inbox">Comment</span> -->
         <span class="text-[14px]">Comments</span>
       </RouterLink>
       <button
