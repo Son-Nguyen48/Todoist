@@ -10,7 +10,7 @@
             width="16"
             height="16"
             viewBox="0 0 16 16"
-            class="project_icon project_icon_inbox text-[#47cac4]"
+            class="project_icon project_icon_inbox text-[#40a7a1]"
           >
             <g fill="currentColor">
               <path
@@ -183,7 +183,7 @@
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
-                  class="project_icon project_icon_inbox text-[#47dbd4]"
+                  class="project_icon project_icon_inbox text-[#40a7a1]"
                 >
                   <g fill="currentColor">
                     <path

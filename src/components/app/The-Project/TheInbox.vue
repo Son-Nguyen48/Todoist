@@ -14,7 +14,11 @@
           </li>
           <hr />
         </ul>
-        <button class="add_task_hover flex items-center gap-2 py-2 w-full">
+        <button
+          @click="isAddFormOpen = true"
+          v-if="!isAddFormOpen"
+          class="add_task_hover flex items-center gap-2 py-2 w-full"
+        >
           <span class="add_task_btn p-[2px] rounded-full">
             <svg width="13" height="13" class="text-[#DE483A]">
               <path
@@ -26,6 +30,20 @@
           </span>
           <span class="add_task_title text-[grey] text-[14px]">Add task</span>
         </button>
+        <!-- <form v-else action="" method="POST">
+          <button
+            @click="isAddFormOpen = false"
+            class="bg-[#f5f5f5] py-1.5 px-4 rounded-md hover:bg-[#e5e5e5]"
+          >
+            Cancel
+          </button>
+        </form> -->
+        <TheAddtaskForm
+          v-else
+          :isAddFormOpen="isAddFormOpen"
+          @closeAddtaskForm="closeAddtaskForm"
+        />
+
         <AddSection />
       </div>
       <section class="pb-5" v-for="section in listSection" :key="section.id">
@@ -177,6 +195,7 @@
 import axios from 'axios'
 // import { computed } from 'vue'
 import AddSection from '../../UI/The-button/AddSection.vue'
+import TheAddtaskForm from '../../UI/Form-addTask/TheAddtaskForm.vue'
 import TheHeader from '../../UI/TheHeader.vue'
 import ContentTask from '../../UI/Content-task/ContentTask.vue'
 import { useRoute, RouterView } from 'vue-router'
@@ -186,6 +205,13 @@ const route = useRoute()
 let taskListInProject = ref([])
 let taskListInSection = ref([])
 let listSection = ref([])
+const isAddFormOpen = ref(false)
+
+const closeAddtaskForm = (data) => {
+  console.log('data: ', data)
+  isAddFormOpen.value = data
+  console.log('isAddFormOpen: ', isAddFormOpen.value)
+}
 // http://localhost:3000/
 axios
   .get('http://localhost:3000/api/getAllTaskInProject/')
@@ -204,3 +230,15 @@ axios.get('http://localhost:3000/api/getAllSection/').then((res) => {
   listSection.value = res.data.sectionList
 })
 </script>
+
+<style scoped>
+button.add_task_hover:hover .add_task_btn {
+  background: #de483a;
+}
+button.add_task_hover:hover .add_task_btn svg {
+  color: white;
+}
+button.add_task_hover:hover .add_task_title {
+  color: #de483a;
+}
+</style>
