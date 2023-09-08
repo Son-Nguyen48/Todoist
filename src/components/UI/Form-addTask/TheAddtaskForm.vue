@@ -1,17 +1,18 @@
 <template>
   <form
     v-if="isAddFormOpen"
-    action=""
+    action="http://localhost:3000/api/addTaskInProject"
     method="POST"
     class="border-[1px] rounded-md focus-visible:border-[2px] mt-1"
   >
     <div class="pt-[10px] px-[10px]">
       <div>
         <input
-          class="w-full placeholder:text-[14px] font-medium focus-visible:outline-none"
+          class="w-full placeholder:text-[13px] font-medium focus-visible:outline-none"
           type="text"
           placeholder="Task name"
           name="title"
+          v-model="taskName"
         />
       </div>
       <div>
@@ -23,6 +24,8 @@
         />
       </div>
       <div class="flex gap-2 py-2">
+        <!-- Due date button  -->
+
         <button
           class="px-3 py-1 border-[1px] flex gap-1 items-center rounded-md hover:bg-[#f5f5f5]"
         >
@@ -40,8 +43,11 @@
               ></path>
             </svg>
           </span>
-          <span class="text-[14px] text-[#666666]">Due date</span>
+          <span class="text-[13px] text-[#666666]">Due date</span>
         </button>
+
+        <!-- Priority button  -->
+
         <button
           class="px-3 py-1 border-[1px] flex gap-1 items-center rounded-md hover:bg-[#f5f5f5]"
         >
@@ -64,8 +70,11 @@
               ></path>
             </svg>
           </span>
-          <span class="text-[14px] text-[#666666]">Priority</span>
+          <span class="text-[13px] text-[#666666]">Priority</span>
         </button>
+
+        <!-- Reminder Button  -->
+
         <button
           class="px-3 py-1 border-[1px] flex gap-1 items-center rounded-md hover:bg-[#f5f5f5]"
         >
@@ -86,9 +95,12 @@
               ></path>
             </svg>
           </span>
-          <span class="text-[14px] text-[#666666]">Reminders</span>
+          <span class="text-[13px] text-[#666666]">Reminders</span>
           <span class="text-[12px] text-[#8f4700] px-1.5 rounded-sm bg-[#faead1]">PRO</span>
         </button>
+
+        <!-- Location Button  -->
+
         <button
           class="px-3 py-1 border-[1px] flex gap-1 items-center rounded-md hover:bg-[#f5f5f5]"
         >
@@ -109,9 +121,12 @@
               ></path>
             </svg>
           </span>
-          <span class="text-[14px] text-[#666666]">Location</span>
+          <span class="text-[13px] text-[#666666]">Location</span>
           <span class="text-[12px] text-[#8f4700] px-1.5 rounded-sm bg-[#faead1]">PRO</span>
         </button>
+
+        <!-- More actons Button  -->
+
         <button class="p-1 px-2 border-[1px] flex gap-1 items-center rounded-md hover:bg-[#f5f5f5]">
           <svg width="15" height="3">
             <path
@@ -125,6 +140,8 @@
       <hr />
     </div>
     <div class="p-2 flex">
+      <!-- Project set Button  -->
+
       <button class="flex gap-1 py-1 px-2 items-center rounded-md hover:bg-[#f5f5f5]">
         <span>
           <svg
@@ -161,15 +178,22 @@
           </svg>
         </span>
       </button>
+
       <div class="ml-auto flex gap-2">
+        <!-- Cancel Button  -->
         <button
           @click.prevent="closeAddtaskForm"
           class="bg-[#f5f5f5] py-1.5 px-4 rounded-md hover:bg-[#e5e5e5]"
         >
           Cancel
         </button>
-
-        <button class="bg-[#EDA59E] py-1.5 px-4 rounded-md cursor-not-allowed">Add task</button>
+        <!-- Save Task Button -->
+        <button
+          class="py-1.5 px-4 rounded-md cursor-not-allowed text-white"
+          :class="taskName ? 'bg-[#DC4C3E] cursor-pointer hover:bg-[#B03D32] ' : 'bg-[#EDA59E]'"
+        >
+          Add task
+        </button>
       </div>
     </div>
   </form>
@@ -177,8 +201,9 @@
 
 <script setup>
 import { ref } from 'vue'
-import { defineEmits } from 'vue'
 const isAddFormOpen = ref(true)
+const taskName = ref('')
+
 const emitCustomEvent = defineEmits(['closeAddtaskForm'])
 const closeAddtaskForm = () => {
   isAddFormOpen.value = false

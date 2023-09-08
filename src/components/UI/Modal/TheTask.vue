@@ -129,6 +129,8 @@
         <!-- Button Add sub Task -->
         <div class="pl-5 py-3">
           <button
+            @click="isAddFormOpen = true"
+            v-if="!isAddFormOpen"
             class="flex gap-0.5 rounded-md pr-2 py-0.5 hover:bg-[#f5f5f5] transition-colors ease-linear duration-300"
           >
             <span>
@@ -149,6 +151,11 @@
             </span>
             <span class="text-[14px]">Add sub-task</span>
           </button>
+          <TheAddtaskForm
+            v-else
+            :isAddFormOpen="isAddFormOpen"
+            @closeAddtaskForm="closeAddtaskForm"
+          />
         </div>
 
         <!-- Comment zone  -->
@@ -411,6 +418,7 @@
 <script setup>
 import { ref } from 'vue'
 import TaskPopover from '../Popover/TaskPopover.vue'
+import TheAddtaskForm from '../Form-addTask/TheAddtaskForm.vue'
 import axios from 'axios'
 import { useRoute } from 'vue-router'
 import router from '../../../router'
@@ -428,6 +436,13 @@ const priorityText = {
   2: ' text-[#EB8909]',
   3: ' text-[#246FE0]',
   4: ' text-[#FFFFFF]'
+}
+
+const isAddFormOpen = ref(false)
+const closeAddtaskForm = (data) => {
+  console.log('data: ', data)
+  isAddFormOpen.value = data
+  console.log('isAddFormOpen: ', isAddFormOpen.value)
 }
 
 const goBack = () => {
