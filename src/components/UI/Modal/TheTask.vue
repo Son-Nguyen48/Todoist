@@ -424,6 +424,8 @@ import { useRoute } from 'vue-router'
 import router from '../../../router'
 
 let task = ref()
+const isAddFormOpen = ref(false)
+
 const route = useRoute()
 const priorityBorder = {
   1: 'border-[#D1453B] ',
@@ -438,7 +440,6 @@ const priorityText = {
   4: ' text-[#FFFFFF]'
 }
 
-const isAddFormOpen = ref(false)
 const closeAddtaskForm = (data) => {
   console.log('data: ', data)
   isAddFormOpen.value = data

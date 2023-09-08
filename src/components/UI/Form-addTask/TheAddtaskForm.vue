@@ -23,6 +23,15 @@
           name="description"
         />
       </div>
+      <div class="hidden">
+        <input
+          class="w-full placeholder:text-[13px] focus-visible:outline-none"
+          type="text"
+          placeholder="Description"
+          name="project_id"
+          :value="props.idProject ? props.idProject : props.idSection"
+        />
+      </div>
       <div class="flex gap-2 py-2">
         <!-- Due date button  -->
 
@@ -203,11 +212,15 @@
 import { ref } from 'vue'
 const isAddFormOpen = ref(true)
 const taskName = ref('')
+const props = defineProps(['idProject', 'idSection'])
+console.log('idProject: ', props.idProject)
 
 const emitCustomEvent = defineEmits(['closeAddtaskForm'])
 const closeAddtaskForm = () => {
   isAddFormOpen.value = false
-  emitCustomEvent('closeAddtaskForm', isAddFormOpen.value)
+  const taskAddFrom = props.idProject ? 'project' : 'section'
+  const dataEmit = { isAddFormOpen: isAddFormOpen.value, taskAddFrom }
+  emitCustomEvent('closeAddtaskForm', dataEmit)
 }
 </script>
 

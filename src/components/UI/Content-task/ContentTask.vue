@@ -34,7 +34,7 @@
       class="flex w-full"
     >
       <div>
-        <p>{{ task.title }}</p>
+        <p class="text-[14px]">{{ task.title }}</p>
         <div class="flex items-center gap-2 mt-2">
           <span>
             <svg
