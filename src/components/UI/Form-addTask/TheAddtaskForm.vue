@@ -1,7 +1,7 @@
 <template>
   <form
     v-if="isAddFormOpen"
-    action="http://localhost:3000/api/addTaskInProject"
+    :action="actionLink"
     method="POST"
     class="border-[1px] rounded-md focus-visible:border-[2px] mt-1"
   >
@@ -28,7 +28,7 @@
           class="w-full placeholder:text-[13px] focus-visible:outline-none"
           type="text"
           placeholder="Description"
-          name="project_id"
+          :name="props.idProject ? 'project_id' : 'section_id'"
           :value="props.idProject ? props.idProject : props.idSection"
         />
       </div>
@@ -214,6 +214,10 @@ const isAddFormOpen = ref(true)
 const taskName = ref('')
 const props = defineProps(['idProject', 'idSection'])
 console.log('idProject: ', props.idProject)
+let actionLink = ref('')
+actionLink.value = props.idProject
+  ? 'http://localhost:3000/api/addTaskInProject'
+  : 'http://localhost:3000/api/addTaskInSection'
 
 const emitCustomEvent = defineEmits(['closeAddtaskForm'])
 const closeAddtaskForm = () => {

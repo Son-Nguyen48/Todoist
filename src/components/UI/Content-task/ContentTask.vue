@@ -121,6 +121,7 @@
 <script setup>
 const props = defineProps(['task'])
 const task = props.task
+console.log('task: ', task)
 const priorityBorder = {
   1: 'border-[#D1453B] ',
   2: 'border-[#EB8909] ',
