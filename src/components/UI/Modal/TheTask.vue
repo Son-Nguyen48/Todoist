@@ -445,9 +445,12 @@ const closeAddtaskForm = (data) => {
   isAddFormOpen.value = data
   console.log('isAddFormOpen: ', isAddFormOpen.value)
 }
+console.log('fullPath: ', route.fullPath)
+const pathArray = route.fullPath.split('/')
+console.log(pathArray)
 
 const goBack = () => {
-  router.push({ name: 'app-inbox', params: { idProject: route.params.idTask } })
+  router.push({ name: 'app-inbox', params: { idProject: pathArray[3] } })
 }
 watchEffect(() => {
   axios

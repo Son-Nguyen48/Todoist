@@ -85,19 +85,29 @@
 </template>
 
 <script setup>
-import axios from 'axios'
+// import axios from 'axios'
 // import { computed } from 'vue'
 import AddSection from '../../UI/The-button/AddSection.vue'
 import TheAddtaskForm from '../../UI/Form-addTask/TheAddtaskForm.vue'
 import TheHeader from '../../UI/TheHeader.vue'
 import ContentTask from '../../UI/Content-task/ContentTask.vue'
 import { useRoute, RouterView } from 'vue-router'
-import { ref } from 'vue'
+import { useTaskStore } from '../../../stores/task.js'
+import { useSectionStore } from '../../../stores/section.js'
+import { ref, computed } from 'vue'
 const route = useRoute()
+const taskStore = useTaskStore()
+const sectionStore = useSectionStore()
+taskStore.getAllTaskInProject()
+taskStore.getAllTaskInSection()
+sectionStore.getAllSection()
+const taskListInProject = computed(() => taskStore.allTaskInProject)
+const taskListInSection = computed(() => taskStore.allTaskInSection)
+const listSection = computed(() => sectionStore.allSection)
 
-let taskListInProject = ref([])
-let taskListInSection = ref([])
-let listSection = ref([])
+// let taskListInProject = ref([])
+// let taskListInSection = ref([])
+// let listSection = ref([])
 let project_id = ref('')
 let taskInProject = ref(false)
 // let taskInSection = ref(false)
@@ -119,22 +129,32 @@ const closeAddtaskForm = (data, index) => {
   }
 }
 // http://localhost:3000/
-axios
-  .get('http://localhost:3000/api/getAllTaskInProject/')
-  .then((response) => {
-    taskListInProject.value = response.data.taskList
-  })
-  .catch((error) => {
-    console.error(error)
-  })
+// axios
+//   .get('http://localhost:3000/api/getAllTaskInProject/')
+//   .then((response) => {
+//     taskListInProject.value = response.data.taskList
+//   })
+//   .catch((error) => {
+//     console.error(error)
+//   })
 
-axios.get('http://localhost:3000/api/getAllTaskInSection/').then((res) => {
-  taskListInSection.value = res.data.taskList
-})
+// axios
+//   .get('http://localhost:3000/api/getAllTaskInSection/')
+//   .then((res) => {
+//     taskListInSection.value = res.data.taskList
+//   })
+//   .catch((error) => {
+//     console.error(error)
+//   })
 
-axios.get('http://localhost:3000/api/getAllSection/').then((res) => {
-  listSection.value = [...res.data.sectionList].map((i) => ({ ...i, isOpenAddTask: false }))
-})
+// axios
+//   .get('http://localhost:3000/api/getAllSection/')
+//   .then((res) => {
+//     listSection.value = [...res.data.sectionList].map((i) => ({ ...i, isOpenAddTask: false }))
+//   })
+//   .catch((error) => {
+//     console.error(error)
+//   })
 </script>
 
 <style scoped>

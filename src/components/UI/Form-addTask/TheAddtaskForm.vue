@@ -194,7 +194,7 @@
         </button>
         <!-- Save Task Button -->
         <button
-          @click="submit"
+          @click.prevent="submit"
           class="py-1.5 px-4 rounded-md cursor-not-allowed text-white"
           :class="taskName ? 'bg-[#DC4C3E] cursor-pointer hover:bg-[#B03D32] ' : 'bg-[#EDA59E]'"
         >
@@ -209,6 +209,8 @@
 <script setup>
 import axios from 'axios'
 import { ref } from 'vue'
+import { useTaskStore } from '../../../stores/task'
+const taskStore = useTaskStore()
 const isAddFormOpen = ref(true)
 const taskName = ref('')
 const description = ref('')
@@ -237,8 +239,25 @@ const submit = () => {
       title: taskName.value,
       description: description.value
     })
-    .then((res) => console.log('Successful!', res.data))
+    .then((res) => {
+      if (props.idProject)
+        taskStore.allTaskInProject.push({
+          id: res.data.project_id,
+          project_id: props.idProject ? props.idProject : props.idSection,
+          title: taskName.value,
+          description: description.value
+        })
+      else
+        taskStore.allTaskInSection.push({
+          id: res.data.project_id,
+          section_id: props.idProject ? props.idProject : props.idSection,
+          title: taskName.value,
+          description: description.value
+        })
+      console.log(res.data)
+    })
     .catch((e) => console.log(e))
+
   closeAddtaskForm()
 }
 </script>
