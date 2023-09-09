@@ -46,7 +46,7 @@
         <h2 class="font-medium pb-1">New Section</h2>
         <ul>
           <li
-            v-for="task in taskListInSection"
+            v-for="task in taskListInSection.filter((task) => task.section_id === section.id)"
             :key="task.id"
             class="goal relative cursor-pointer before:content-[''] before:absolute before:-left-7 before:w-[50px] before:h-full"
           >
@@ -98,6 +98,7 @@ let project_id = ref('')
 let taskInProject = ref(false)
 let taskInSection = ref(false)
 project_id.value = route.params.idProject
+console.log('Project_id: ', project_id.value)
 
 const showAddForm = (refForm) => {
   if (refForm === 'taskInProject') taskInProject.value = true

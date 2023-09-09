@@ -6,7 +6,7 @@
       <li class="w-full flex hover:bg-[#EEEEEE] rounded-md cursor-pointer">
         <RouterLink
           class="text-[14px] active:bg-[#EEEEEE] w-full flex flex-1 p-[5px] gap-[5px]"
-          :to="{ name: 'app-inbox', params: { idProject: 'p1' } }"
+          :to="{ name: 'app-inbox', params: { idProject: '1' } }"
         >
           <span>
             <svg
@@ -237,7 +237,9 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+
+</script>
 
 <style scoped>
 .project_panel:hover .project_control {

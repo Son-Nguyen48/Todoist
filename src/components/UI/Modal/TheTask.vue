@@ -86,13 +86,13 @@
 
           <button
             class="relative top-1 border-[1px] rounded-full h-5 w-5"
-            :class="priorityBorder[task.priority]"
+            :class="priorityBorder[task?.priority]"
           >
             <svg
               width="24"
               height="24"
               class="absolute -top-[3px] -left-[4px]"
-              :class="priorityText[task.priority]"
+              :class="priorityText[task?.priority]"
             >
               <path
                 fill="currentColor"
@@ -102,8 +102,8 @@
           </button>
 
           <div>
-            <p class="text-[18px] font-medium">{{ task.title }}</p>
-            <div v-if="!task.description" class="flex gap-2 pt-5">
+            <p class="text-[18px] font-medium">{{ task?.title }}</p>
+            <div v-if="!task?.description" class="flex gap-2 pt-5">
               <span>
                 <svg
                   width="24"
@@ -122,7 +122,8 @@
               <span>Description</span>
             </div>
             <div else class="pt-5">
-              <p class="text-[14px]">{{ task.description }}</p>
+              <p class="text-[14px]">{{ task?.description }}</p>
+              {{ task }}
             </div>
           </div>
         </div>
@@ -243,7 +244,7 @@
                   ></path>
                 </svg>
               </span>
-              <span class="text-[12px]">{{ task.dueDate }}</span>
+              <span class="text-[12px]">{{ task?.dueDate }}</span>
             </div>
             <span class="ml-auto">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
@@ -274,7 +275,7 @@
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                   class="Gw1i-E3"
-                  :class="priorityText[task.priority]"
+                  :class="priorityText[task?.priority]"
                   data-icon-name="priority-icon"
                   data-priority="1"
                 >
@@ -286,7 +287,7 @@
                   ></path>
                 </svg>
               </span>
-              <span class="text-[12px]">P{{ task.priority }}</span>
+              <span class="text-[12px]">P{{ task?.priority }}</span>
             </div>
             <span class="ml-auto">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
@@ -416,7 +417,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 import TaskPopover from '../Popover/TaskPopover.vue'
 import TheAddtaskForm from '../Form-addTask/TheAddtaskForm.vue'
 import axios from 'axios'
@@ -447,16 +448,18 @@ const closeAddtaskForm = (data) => {
 }
 
 const goBack = () => {
-  router.push({ name: 'app-inbox', params: { idProject: 'p1' } })
+  router.push({ name: 'app-inbox', params: { idProject: route.params.idTask } })
 }
-axios
-  .get(`http://localhost:3000/api/getTaskDetail/?id=${route.params.idTask}`)
-  .then((res) => {
-    task.value = res.data
-  })
-  .catch((e) => {
-    console.log(e)
-  })
+watchEffect(() => {
+  axios
+    .get(`http://localhost:3000/api/getTaskDetail/?id=${route.params.idTask}`)
+    .then((res) => {
+      task.value = res.data
+    })
+    .catch((e) => {
+      console.log(e)
+    })
+})
 </script>
 
 <style lang="scss" scoped></style>

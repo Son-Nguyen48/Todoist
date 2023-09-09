@@ -198,6 +198,7 @@
         </button>
         <!-- Save Task Button -->
         <button
+          @click="submitForm(dataForm)"
           class="py-1.5 px-4 rounded-md cursor-not-allowed text-white"
           :class="taskName ? 'bg-[#DC4C3E] cursor-pointer hover:bg-[#B03D32] ' : 'bg-[#EDA59E]'"
         >
@@ -209,15 +210,29 @@
 </template>
 
 <script setup>
+import axios from 'axios'
 import { ref } from 'vue'
 const isAddFormOpen = ref(true)
 const taskName = ref('')
+const title = ref('')
+const description = ref('')
 const props = defineProps(['idProject', 'idSection'])
 console.log('idProject: ', props.idProject)
+console.log('idSection: ', props.idSection)
 let actionLink = ref('')
-actionLink.value = props.idProject
   ? 'http://localhost:3000/api/addTaskInProject'
   : 'http://localhost:3000/api/addTaskInSection'
+// console.log('actionLink: ', actionLink)
+let dataForm = ref([])
+if (props.idProject) {
+  dataForm.value['title'] = title.value
+  dataForm.value['description'] = description.value
+  dataForm.value['project_id'] = props.project_id
+} else {
+  dataForm.value['title'] = title.value
+  dataForm.value['description'] = description.value
+  dataForm.value['section_id'] = props.section_id
+}
 
 const emitCustomEvent = defineEmits(['closeAddtaskForm'])
 const closeAddtaskForm = () => {
@@ -225,6 +240,15 @@ const closeAddtaskForm = () => {
   const taskAddFrom = props.idProject ? 'project' : 'section'
   const dataEmit = { isAddFormOpen: isAddFormOpen.value, taskAddFrom }
   emitCustomEvent('closeAddtaskForm', dataEmit)
+}
+
+const submitForm = (e, dataForm) => {
+  e.preventDefault()
+  closeAddtaskForm()
+  axios
+    .post(actionLink.value, dataForm)
+    .then((res) => console.log('Successful!', res))
+    .catch((e) => console.log(e))
 }
 </script>
 
