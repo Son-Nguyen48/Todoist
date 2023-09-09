@@ -1,10 +1,5 @@
 <template>
-  <form
-    v-if="isAddFormOpen"
-    :action="actionLink"
-    method="POST"
-    class="border-[1px] rounded-md focus-visible:border-[2px] mt-1"
-  >
+  <form v-if="isAddFormOpen" class="border-[1px] rounded-md focus-visible:border-[2px] mt-1">
     <div class="pt-[10px] px-[10px]">
       <div>
         <input
@@ -21,6 +16,7 @@
           type="text"
           placeholder="Description"
           name="description"
+          v-model="description"
         />
       </div>
       <div class="hidden">
@@ -198,7 +194,7 @@
         </button>
         <!-- Save Task Button -->
         <button
-          @click="submitForm(dataForm)"
+          @click="submit"
           class="py-1.5 px-4 rounded-md cursor-not-allowed text-white"
           :class="taskName ? 'bg-[#DC4C3E] cursor-pointer hover:bg-[#B03D32] ' : 'bg-[#EDA59E]'"
         >
@@ -207,6 +203,7 @@
       </div>
     </div>
   </form>
+  <!-- <button @click="submit">ADD</button> -->
 </template>
 
 <script setup>
@@ -214,26 +211,16 @@ import axios from 'axios'
 import { ref } from 'vue'
 const isAddFormOpen = ref(true)
 const taskName = ref('')
-const title = ref('')
 const description = ref('')
 const props = defineProps(['idProject', 'idSection'])
-console.log('idProject: ', props.idProject)
-console.log('idSection: ', props.idSection)
+console.log('idProject: ', props.idProject, 'idSection: ', props.idSection)
 let actionLink = ref('')
+actionLink.value = props.idProject
   ? 'http://localhost:3000/api/addTaskInProject'
   : 'http://localhost:3000/api/addTaskInSection'
 // console.log('actionLink: ', actionLink)
-let dataForm = ref([])
-if (props.idProject) {
-  dataForm.value['title'] = title.value
-  dataForm.value['description'] = description.value
-  dataForm.value['project_id'] = props.project_id
-} else {
-  dataForm.value['title'] = title.value
-  dataForm.value['description'] = description.value
-  dataForm.value['section_id'] = props.section_id
-}
 
+// Close form
 const emitCustomEvent = defineEmits(['closeAddtaskForm'])
 const closeAddtaskForm = () => {
   isAddFormOpen.value = false
@@ -242,13 +229,17 @@ const closeAddtaskForm = () => {
   emitCustomEvent('closeAddtaskForm', dataEmit)
 }
 
-const submitForm = (e, dataForm) => {
-  e.preventDefault()
-  closeAddtaskForm()
+// submit method
+const submit = () => {
   axios
-    .post(actionLink.value, dataForm)
-    .then((res) => console.log('Successful!', res))
+    .post(actionLink.value, {
+      id: props.idProject ? props.idProject : props.idSection,
+      title: taskName.value,
+      description: description.value
+    })
+    .then((res) => console.log('Successful!', res.data))
     .catch((e) => console.log(e))
+  closeAddtaskForm()
 }
 </script>
 
