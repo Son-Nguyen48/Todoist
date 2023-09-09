@@ -34,7 +34,8 @@
       class="flex w-full"
     >
       <div>
-        <p>{{ task.title }}</p>
+        <p class="text-[14px]">{{ task.title }}</p>
+        <p class="text-[12px] text-[#928484]">{{ task.description }}</p>
         <div class="flex items-center gap-2 mt-2">
           <span>
             <svg
@@ -57,7 +58,9 @@
         </div>
       </div>
       <div class="goal_control ml-auto hidden items-center gap-2">
-        <button class="hover:bg-[#f5f5f5] rounded-sm">
+        <!-- Edit task button  -->
+
+        <button @click.stop="console.log(1)" class="hover:bg-[#f5f5f5] rounded-sm">
           <svg width="24" height="24">
             <g fill="none" fill-rule="evenodd">
               <path fill="currentColor" d="M9.5 19h10a.5.5 0 110 1h-10a.5.5 0 110-1z"></path>
@@ -68,6 +71,8 @@
             </g>
           </svg>
         </button>
+
+        <!-- Due date button  -->
 
         <button class="hover:bg-[#f5f5f5] rounded-sm">
           <svg
@@ -85,6 +90,8 @@
             ></path>
           </svg>
         </button>
+
+        <!-- add comment button  -->
 
         <RouterLink
           :to="{ name: 'project-task-detail', params: { idTask: task.id } }"
