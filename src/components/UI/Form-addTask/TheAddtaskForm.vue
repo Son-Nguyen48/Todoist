@@ -1,10 +1,5 @@
 <template>
-  <form
-    v-if="isAddFormOpen"
-    :action="actionLink"
-    method="POST"
-    class="border-[1px] rounded-md focus-visible:border-[2px] mt-1"
-  >
+  <form v-if="isAddFormOpen" class="border-[1px] rounded-md focus-visible:border-[2px] mt-1">
     <div class="pt-[10px] px-[10px]">
       <div>
         <input
@@ -199,8 +194,7 @@
         </button>
         <!-- Save Task Button -->
         <button
-          type="submit"
-          @click="submitForm(dataForm)"
+          @click="submit"
           class="py-1.5 px-4 rounded-md cursor-not-allowed text-white"
           :class="taskName ? 'bg-[#DC4C3E] cursor-pointer hover:bg-[#B03D32] ' : 'bg-[#EDA59E]'"
         >
@@ -209,7 +203,7 @@
       </div>
     </div>
   </form>
-  <button @click="submit">ADD</button>
+  <!-- <button @click="submit">ADD</button> -->
 </template>
 
 <script setup>

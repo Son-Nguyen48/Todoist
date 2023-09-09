@@ -42,8 +42,8 @@
 
         <AddSection />
       </div>
-      <section class="pb-5" v-for="section in listSection" :key="section.id">
-        <h2 class="font-medium pb-1">New Section</h2>
+      <section class="pb-5" v-for="(section, index) in listSection" :key="section.id">
+        <h2 class="font-medium pb-1">{{ section.title }}</h2>
         <ul>
           <li
             v-for="task in taskListInSection.filter((task) => task.section_id === section.id)"
@@ -56,8 +56,8 @@
           <hr />
         </ul>
         <button
-          @click="showAddForm('taskInSection')"
-          v-if="!taskInSection"
+          @click="showAddForm('taskInSection', index)"
+          v-if="!section.isOpenAddTask"
           class="add_task_hover flex items-center gap-2 py-2 w-full"
         >
           <span class="add_task_btn p-[2px] rounded-full">
@@ -71,7 +71,11 @@
           </span>
           <span class="add_task_title text-[grey] text-[14px]">Add task</span>
         </button>
-        <TheAddtaskForm v-else :idSection="section.id" @closeAddtaskForm="closeAddtaskForm" />
+        <TheAddtaskForm
+          v-else
+          :idSection="section.id"
+          @closeAddtaskForm="(val) => closeAddtaskForm(val, index)"
+        />
         <AddSection />
       </section>
 
@@ -96,20 +100,23 @@ let taskListInSection = ref([])
 let listSection = ref([])
 let project_id = ref('')
 let taskInProject = ref(false)
-let taskInSection = ref(false)
+// let taskInSection = ref(false)
 project_id.value = route.params.idProject
 console.log('Project_id: ', project_id.value)
 
-const showAddForm = (refForm) => {
+const showAddForm = (refForm, index) => {
   if (refForm === 'taskInProject') taskInProject.value = true
-  else if (refForm === 'taskInSection') taskInSection.value = true
-  else return
+  else if (refForm === 'taskInSection') {
+    listSection.value[index].isOpenAddTask = true
+    // taskInSection.value = true
+  } else return
 }
 
-const closeAddtaskForm = (data) => {
-  console.log('data: ', data)
+const closeAddtaskForm = (data, index) => {
   if (data.taskAddFrom === 'project') taskInProject.value = false
-  else taskInSection.value = false
+  else {
+    listSection.value[index].isOpenAddTask = false
+  }
 }
 // http://localhost:3000/
 axios
@@ -126,7 +133,7 @@ axios.get('http://localhost:3000/api/getAllTaskInSection/').then((res) => {
 })
 
 axios.get('http://localhost:3000/api/getAllSection/').then((res) => {
-  listSection.value = res.data.sectionList
+  listSection.value = [...res.data.sectionList].map((i) => ({ ...i, isOpenAddTask: false }))
 })
 </script>
 

@@ -23,7 +23,7 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 import router from '../../../router'
 const goBack = () => {
-  router.push({ name: 'app-inbox', params: { idProject: 'p1' } })
+  router.push({ name: 'app-inbox', params: { idProject: route.params.idTask } })
 }
 </script>
 

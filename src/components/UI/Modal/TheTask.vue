@@ -123,7 +123,6 @@
             </div>
             <div else class="pt-5">
               <p class="text-[14px]">{{ task?.description }}</p>
-              {{ task }}
             </div>
           </div>
         </div>
