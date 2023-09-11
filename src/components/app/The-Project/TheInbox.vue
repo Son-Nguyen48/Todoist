@@ -5,11 +5,11 @@
       <div class="pt-20">
         <ul>
           <li
-            v-for="task in taskListInProject"
+            v-for="(task, index) in taskListInProject"
             :key="task.id"
             class="goal relative cursor-pointer before:content-[''] before:absolute before:-left-7 before:w-[50px] before:h-full"
           >
-            <ContentTask @changePriority="changePriority" :task="task" />
+            <ContentTask @changePriority="changePriority" :index="index" :task="task" />
             <hr />
           </li>
         </ul>
@@ -61,13 +61,13 @@
         </div>
         <ul>
           <li
-            v-for="task in taskListInSection.length !== 0
+            v-for="(task, index) in taskListInSection.length !== 0
               ? taskListInSection.filter((task) => task.section_id === section.id)
               : taskListInSection"
             :key="task.id"
             class="goal relative cursor-pointer before:content-[''] before:absolute before:-left-7 before:w-[50px] before:h-full"
           >
-            <ContentTask @changePriority="changePriority" :task="task" />
+            <ContentTask @changePriority="changePriority" :index="index" :task="task" />
             <hr />
           </li>
         </ul>
@@ -150,7 +150,7 @@ const closeAddtaskForm = (data, index) => {
 
 const changePriority = (data) => {
   console.log('go here', data)
-  taskStore.updateTask(data.taskId, 'priority', data.priority, data.result)
+  taskStore.updateProperty(data.taskId, 'priority', data.priority, data.result)
 }
 // http://localhost:3000/
 // axios
