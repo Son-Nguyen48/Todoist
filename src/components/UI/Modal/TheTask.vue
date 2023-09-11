@@ -131,7 +131,7 @@
           <button
             @click="isAddFormOpen = true"
             v-if="!isAddFormOpen"
-            class="flex gap-0.5 rounded-md pr-2 py-0.5 hover:bg-[#f5f5f5] transition-colors ease-linear duration-300"
+            class="flex gap-0.5 rounded-md pr-2 py-1 hov3r:bg-[#f5f5f5] transition-colors ease-linear duration-300"
           >
             <span>
               <svg
@@ -182,7 +182,7 @@
         <div class="w-full">
           <p class="pb-2 text-[14px] px-2">Project</p>
           <button
-            class="flex items-center w-full rounded-md py-0.5 px-2 hover:bg-[#f5f5f5] transition-colors ease-linear duration-300 mb-2"
+            class="flex items-center w-full rounded-md py-1 px-3 hover:bg-[#f5f5f5] transition-colors ease-linear duration-300 mb-2"
           >
             <div class="flex gap-1 items-center">
               <span>
@@ -223,7 +223,7 @@
         <div class="w-full">
           <p class="pb-2 text-[14px] px-2">Due date</p>
           <button
-            class="flex items-center w-full rounded-md py-0.5 px-2 hover:bg-[#f5f5f5] transition-colors ease-linear duration-300 mb-2"
+            class="flex items-center w-full rounded-md py-1 px-3 hover:bg-[#f5f5f5] transition-colors ease-linear duration-300 mb-2"
           >
             <div class="flex gap-1 items-center">
               <span>
@@ -263,7 +263,7 @@
         <div class="w-full">
           <p class="pb-2 text-[14px] px-2">Priority</p>
           <button
-            class="flex items-center w-full rounded-md py-0.5 px-2 hover:bg-[#f5f5f5] transition-colors ease-linear duration-300 mb-2"
+            class="flex items-center w-full rounded-md py-1 px-3 hover:bg-[#f5f5f5] transition-colors ease-linear duration-300 mb-2"
           >
             <div class="flex gap-1 items-center">
               <span>
@@ -305,7 +305,7 @@
         </div>
         <div class="w-full">
           <button
-            class="flex items-center w-full rounded-md py-0.5 px-2 hover:bg-[#f5f5f5] transition-colors ease-linear duration-300 mb-2"
+            class="flex items-center w-full rounded-md py-1 px-3 hover:bg-[#f5f5f5] transition-colors ease-linear duration-300 mb-2"
           >
             <div class="flex gap-1 items-center">
               <span class="text-[14px]">Labels</span>
@@ -328,8 +328,8 @@
               </svg>
             </span>
           </button>
-          <div class="mb-2 px-2 flex items-center gap-1 rounded-md bg-[#f5f5f5] max-w-max py-0.5">
-            <span>Job</span>
+          <div class="mb-2 px-2 flex items-center gap-1 rounded-md bg-[#f5f5f5] max-w-max py-1">
+            3 <span>Job</span>
             <button
               class="hover:bg-[#bdafaf] rounded-sm transition-colors ease-linear duration-300"
             >
@@ -352,7 +352,7 @@
         </div>
         <div class="w-full">
           <button
-            class="flex w-full rounded-md py-0.5 px-2 hover:bg-[#f5f5f5] transition-colors ease-linear duration-300 mb-2"
+            class="flex w-full rounded-md py-1 px-3 hover:bg-[#f5f5f5] transition-colors ease-linear duration-300 mb-2"
           >
             <div class="flex gap-1 items-center">
               <span class="text-[14px]">Reminder</span>
@@ -380,7 +380,7 @@
         </div>
         <div class="w-full">
           <button
-            class="flex w-full rounded-md py-0.5 px-2 hover:bg-[#f5f5f5] transition-colors ease-linear duration-300 mb-2"
+            class="flex w-full rounded-md py-1 px-3 hover:bg-[#f5f5f5] transition-colors ease-linear duration-300 mb-2"
           >
             <div class="flex gap-1 items-center">
               <span class="text-[14px]">Location</span>
@@ -442,7 +442,7 @@ const priorityText = {
 
 const closeAddtaskForm = (data) => {
   console.log('data: ', data)
-  isAddFormOpen.value = data
+  isAddFormOpen.value = data.isAddFormOpen
   console.log('isAddFormOpen: ', isAddFormOpen.value)
 }
 console.log('fullPath: ', route.fullPath)

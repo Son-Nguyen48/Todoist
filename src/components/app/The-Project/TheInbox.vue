@@ -9,10 +9,9 @@
             :key="task.id"
             class="goal relative cursor-pointer before:content-[''] before:absolute before:-left-7 before:w-[50px] before:h-full"
           >
-            <ContentTask :task="task" />
+            <ContentTask @changePriority="changePriority" :task="task" />
             <hr />
           </li>
-          <hr />
         </ul>
         <button
           @click="showAddForm('taskInProject')"
@@ -43,17 +42,34 @@
         <AddSection />
       </div>
       <section class="pb-5" v-for="(section, index) in listSection" :key="section.id">
-        <h2 class="font-medium pb-1">{{ section.title }}</h2>
+        <div class="flex border-b-[1px] pb-2">
+          <h2 class="font-medium pb-1">{{ section.title }}</h2>
+          <button class="ml-auto hover:bg-[#f5f5f5] px-0.5 rounded-md">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+              <g
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                transform="translate(3 10)"
+              >
+                <circle cx="2" cy="2" r="2"></circle>
+                <circle cx="9" cy="2" r="2"></circle>
+                <circle cx="16" cy="2" r="2"></circle>
+              </g>
+            </svg>
+          </button>
+        </div>
         <ul>
           <li
-            v-for="task in taskListInSection.filter((task) => task.section_id === section.id)"
+            v-for="task in taskListInSection.length !== 0
+              ? taskListInSection.filter((task) => task.section_id === section.id)
+              : taskListInSection"
             :key="task.id"
             class="goal relative cursor-pointer before:content-[''] before:absolute before:-left-7 before:w-[50px] before:h-full"
           >
-            <ContentTask :task="task" />
+            <ContentTask @changePriority="changePriority" :task="task" />
             <hr />
           </li>
-          <hr />
         </ul>
         <button
           @click="showAddForm('taskInSection', index)"
@@ -100,9 +116,12 @@ const taskStore = useTaskStore()
 const sectionStore = useSectionStore()
 taskStore.getAllTaskInProject()
 taskStore.getAllTaskInSection()
+taskStore.getAllTask()
 sectionStore.getAllSection()
 const taskListInProject = computed(() => taskStore.allTaskInProject)
 const taskListInSection = computed(() => taskStore.allTaskInSection)
+// console.log('taskListInSection: ', taskListInSection.value)
+// const allTask = computed(() => taskStore.allTask)
 const listSection = computed(() => sectionStore.allSection)
 
 // let taskListInProject = ref([])
@@ -127,6 +146,11 @@ const closeAddtaskForm = (data, index) => {
   else {
     listSection.value[index].isOpenAddTask = false
   }
+}
+
+const changePriority = (data) => {
+  console.log('go here', data)
+  taskStore.updateTask(data.taskId, 'priority', data.priority, data.result)
 }
 // http://localhost:3000/
 // axios

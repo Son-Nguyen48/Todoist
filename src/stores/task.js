@@ -37,12 +37,23 @@ export const useTaskStore = defineStore('task', () => {
       })
   }
 
+  function updateTask(id, property, value, zone) {
+    if (zone === 'project')
+      allTaskInProject.value.find((task) => task.id == id)[`${property}`] = value
+    else {
+      console.log('zone: ', zone)
+      const section_id = zone.split('_')[1]
+      allTaskInSection.value.find((task) => task.section_id == section_id)[`${property}`] = value
+    }
+  }
+
   return {
     allTask,
     allTaskInProject,
     allTaskInSection,
     getAllTask,
     getAllTaskInProject,
-    getAllTaskInSection
+    getAllTaskInSection,
+    updateTask
   }
 })

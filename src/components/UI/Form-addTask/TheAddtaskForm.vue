@@ -194,7 +194,7 @@
         </button>
         <!-- Save Task Button -->
         <button
-          @click.prevent="submit"
+          @click="submit"
           class="py-1.5 px-4 rounded-md cursor-not-allowed text-white"
           :class="taskName ? 'bg-[#DC4C3E] cursor-pointer hover:bg-[#B03D32] ' : 'bg-[#EDA59E]'"
         >
