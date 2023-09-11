@@ -275,9 +275,9 @@ const editTask = () => {
     .then((res) => {
       console.log(res)
       const resultAfterChange = []
-      for (const element in res.data) {
+      for (const element in res.data.data) {
         if (element !== 'id' && element !== 'result') {
-          resultAfterChange[`${element}`] = res.data[`${element}`]
+          resultAfterChange[`${element}`] = res.data.data[`${element}`]
         }
       }
       const zone = res.data.result?.project_id ? 'project' : 'section'
