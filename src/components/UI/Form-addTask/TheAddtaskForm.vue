@@ -1,5 +1,5 @@
 <template>
-  <form v-if="isAddFormOpen" class="border-[1px] rounded-md focus-visible:border-[2px] mt-1">
+  <form v-if="isAddFormOpen" class="border-[1px] rounded-md focus-visible:border-[2px] mt-1 mb-4">
     <div class="pt-[10px] px-[10px]">
       <div>
         <input
@@ -194,11 +194,12 @@
         </button>
         <!-- Save Task Button -->
         <button
-          @click="submit"
-          class="py-1.5 px-4 rounded-md cursor-not-allowed text-white"
+          @click.prevent="saveTask"
+          class="py-1.5 px-4 rounded-md text-white"
+          :disabled="!taskName"
           :class="taskName ? 'bg-[#DC4C3E] cursor-pointer hover:bg-[#B03D32] ' : 'bg-[#EDA59E]'"
         >
-          Add task
+          {{ task ? 'Edit task' : 'Add task' }}
         </button>
       </div>
     </div>
@@ -214,8 +215,12 @@ const taskStore = useTaskStore()
 const isAddFormOpen = ref(true)
 const taskName = ref('')
 const description = ref('')
-const props = defineProps(['idProject', 'idSection'])
+const props = defineProps(['idProject', 'idSection', 'task', 'index'])
 console.log('idProject: ', props.idProject, 'idSection: ', props.idSection)
+if (props.task) {
+  taskName.value = props.task.title
+  description.value = props.task.description
+}
 let actionLink = ref('')
 actionLink.value = props.idProject
   ? 'http://localhost:3000/api/addTaskInProject'
@@ -224,9 +229,9 @@ actionLink.value = props.idProject
 
 // Close form
 const emitCustomEvent = defineEmits(['closeAddtaskForm'])
+const taskAddFrom = props.idProject ? 'project' : 'section'
 const closeAddtaskForm = () => {
   isAddFormOpen.value = false
-  const taskAddFrom = props.idProject ? 'project' : 'section'
   const dataEmit = { isAddFormOpen: isAddFormOpen.value, taskAddFrom }
   emitCustomEvent('closeAddtaskForm', dataEmit)
 }
@@ -260,6 +265,30 @@ const submit = () => {
 
   closeAddtaskForm()
 }
+const dataEditForm = ref({ id: props.task.id })
+const editTask = () => {
+  if (taskName.value !== props.task.title) dataEditForm.value['title'] = taskName.value
+  if (description.value !== props.task.description)
+    dataEditForm.value['description'] = description.value
+  axios
+    .patch('http://localhost:3000/api/updateTask', dataEditForm.value)
+    .then((res) => {
+      console.log(res)
+      const resultAfterChange = []
+      for (const element in res.data) {
+        if (element !== 'id' && element !== 'result') {
+          resultAfterChange[`${element}`] = res.data[`${element}`]
+        }
+      }
+      const zone = res.data.result?.project_id ? 'project' : 'section'
+      taskStore.updateTask(res.data.result.id, resultAfterChange, zone)
+    })
+    .catch((e) => console.log(e))
+  closeAddtaskForm()
+}
+console.log('task: ', props.task)
+
+const saveTask = props.task?.id ? editTask : submit
 </script>
 
 <style lang="scss" scoped></style>

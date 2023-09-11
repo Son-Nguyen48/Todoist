@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <button @click="isRefOpen = true" class="px-3 py-1 border-[1px] rounded-md" ref="target">
     Button
     <p class="absolute top-1/2" v-if="isRefOpen">Hello</p>
@@ -20,4 +20,4 @@ export default {
     return { target, isRefOpen }
   }
 }
-</script>
+</script> -->
