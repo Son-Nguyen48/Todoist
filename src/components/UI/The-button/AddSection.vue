@@ -6,4 +6,9 @@
 
 <script setup></script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+button.add_section_btn:hover::before,
+button.add_section_btn:hover::after {
+  display: inline;
+}
+</style>
