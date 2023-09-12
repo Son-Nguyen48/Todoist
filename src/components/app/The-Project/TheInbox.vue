@@ -120,7 +120,6 @@ taskStore.getAllTask()
 sectionStore.getAllSection()
 const taskListInProject = computed(() => taskStore.allTaskInProject)
 const taskListInSection = computed(() => taskStore.allTaskInSection)
-// console.log('taskListInSection: ', taskListInSection.value)
 // const allTask = computed(() => taskStore.allTask)
 const listSection = computed(() => sectionStore.allSection)
 
