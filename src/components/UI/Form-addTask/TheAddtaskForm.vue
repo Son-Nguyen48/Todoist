@@ -246,14 +246,14 @@ const submit = () => {
     })
     .then((res) => {
       if (props.idProject)
-        taskStore.allTaskInProject.push({
+        taskStore.allTaskInProject.unshift({
           id: res.data.project_id,
           project_id: props.idProject ? props.idProject : props.idSection,
           title: taskName.value,
           description: description.value
         })
       else
-        taskStore.allTaskInSection.push({
+        taskStore.allTaskInSection.unshift({
           id: res.data.project_id,
           section_id: props.idProject ? props.idProject : props.idSection,
           title: taskName.value,
