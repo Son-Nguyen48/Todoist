@@ -5,11 +5,15 @@
       <div class="pt-20">
         <ul>
           <li
-            v-for="(task, index) in taskListInProject"
+            v-for="task in taskListInProject"
             :key="task.id"
             class="goal relative cursor-pointer before:content-[''] before:absolute before:-left-7 before:w-[50px] before:h-full"
           >
-            <ContentTask @changePriority="changePriority" :task="task" />
+            <ContentTask
+              @changePriority="changePriority"
+              @deleteTask="(val) => deleteTask(val, 'project')"
+              :task="task"
+            />
             <hr />
           </li>
         </ul>
@@ -67,7 +71,11 @@
             :key="task.id"
             class="goal relative cursor-pointer before:content-[''] before:absolute before:-left-7 before:w-[50px] before:h-full"
           >
-            <ContentTask @changePriority="changePriority" :task="task" />
+            <ContentTask
+              @changePriority="changePriority"
+              @deleteTask="(val) => deleteTask(val, 'section')"
+              :task="task"
+            />
             <hr />
           </li>
         </ul>
@@ -101,7 +109,7 @@
 </template>
 
 <script setup>
-// import axios from 'axios'
+import axios from 'axios'
 // import { computed } from 'vue'
 import AddSection from '../../UI/The-button/AddSection.vue'
 import TheAddtaskForm from '../../UI/Form-addTask/TheAddtaskForm.vue'
@@ -151,33 +159,23 @@ const changePriority = (data) => {
   console.log('go here', data)
   taskStore.updateProperty(data.taskId, 'priority', data.priority, data.result)
 }
-// http://localhost:3000/
-// axios
-//   .get('http://localhost:3000/api/getAllTaskInProject/')
-//   .then((response) => {
-//     taskListInProject.value = response.data.taskList
-//   })
-//   .catch((error) => {
-//     console.error(error)
-//   })
 
-// axios
-//   .get('http://localhost:3000/api/getAllTaskInSection/')
-//   .then((res) => {
-//     taskListInSection.value = res.data.taskList
-//   })
-//   .catch((error) => {
-//     console.error(error)
-//   })
-
-// axios
-//   .get('http://localhost:3000/api/getAllSection/')
-//   .then((res) => {
-//     listSection.value = [...res.data.sectionList].map((i) => ({ ...i, isOpenAddTask: false }))
-//   })
-//   .catch((error) => {
-//     console.error(error)
-//   })
+const deleteTask = (data, zone) => {
+  console.log('data: ', data.id)
+  axios
+    .delete(`http://localhost:3000/api/deleteTask/`, { data: { id: data.id } })
+    .then((res) => {
+      console.log(res)
+      if (zone === 'project') {
+        const indexSelected = taskListInProject.value.findIndex((task) => task.id === data.id)
+        taskListInProject.value.splice(indexSelected, 1)
+      } else {
+        const indexSelected = taskListInSection.value.findIndex((task) => task.id == data.id)
+        taskListInSection.value.splice(indexSelected, 1)
+      }
+    })
+    .catch((e) => console.log(e))
+}
 </script>
 
 <style scoped>
