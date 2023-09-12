@@ -42,8 +42,7 @@ export const useTaskStore = defineStore('task', () => {
       allTaskInProject.value.find((task) => task.id == id)[`${property}`] = value
     else {
       console.log('zone: ', zone)
-      const section_id = zone.split('_')[1]
-      allTaskInSection.value.find((task) => task.section_id == section_id)[`${property}`] = value
+      allTaskInSection.value.find((task) => task.id == id)[`${property}`] = value
     }
   }
 
@@ -54,9 +53,8 @@ export const useTaskStore = defineStore('task', () => {
           properties[`${property}`]
       }
     } else {
-      const section_id = zone.split('_')[1]
       for (const property in properties) {
-        allTaskInSection.value.find((task) => task.section_id == section_id)[`${property}`] =
+        allTaskInSection.value.find((task) => task.id == id)[`${property}`] =
           properties[`${property}`]
       }
     }

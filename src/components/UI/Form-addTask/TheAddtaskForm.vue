@@ -266,6 +266,9 @@ const submit = () => {
   closeAddtaskForm()
 }
 const dataEditForm = ref({ id: props.task?.id })
+
+// Edit method
+
 const editTask = () => {
   if (taskName.value !== props.task.title) dataEditForm.value['title'] = taskName.value
   if (description.value !== props.task.description)
