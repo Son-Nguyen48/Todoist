@@ -625,7 +625,7 @@ const setPriority = (priority, taskId) => {
   // const zone = task.project_id ? 'project' : 'section'
 
   axios
-    .put('http://localhost:3000/api/setPriority', { priority, taskId })
+    .put('https://sonnguyen48todoist.000webhostapp.com/api/setPriority', { priority, taskId })
     .then((res) => {
       console.log(res.data)
       const result = res.data.result?.project_id

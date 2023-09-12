@@ -454,7 +454,9 @@ const goBack = () => {
 }
 watchEffect(() => {
   axios
-    .get(`http://localhost:3000/api/getTaskDetail/?id=${route.params.idTask}`)
+    .get(
+      `https://sonnguyen48todoist.000webhostapp.com/api/getTaskDetail/?id=${route.params.idTask}`
+    )
     .then((res) => {
       task.value = res.data
     })

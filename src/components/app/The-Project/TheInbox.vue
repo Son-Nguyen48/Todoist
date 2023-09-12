@@ -163,7 +163,9 @@ const changePriority = (data) => {
 const deleteTask = (data, zone) => {
   console.log('data: ', data.id)
   axios
-    .delete(`http://localhost:3000/api/deleteTask/`, { data: { id: data.id } })
+    .delete(`https://sonnguyen48todoist.000webhostapp.com/api/deleteTask/`, {
+      data: { id: data.id }
+    })
     .then((res) => {
       console.log(res)
       if (zone === 'project') {

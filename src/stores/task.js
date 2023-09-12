@@ -8,7 +8,7 @@ export const useTaskStore = defineStore('task', () => {
   const allTaskInSection = ref([])
   function getAllTask() {
     axios
-      .get('http://localhost:3000/api/getAllTask/')
+      .get('https://sonnguyen48todoist.000webhostapp.com/api/getAllTask/')
       .then((response) => {
         allTask.value = response.data.taskList
       })
@@ -18,7 +18,7 @@ export const useTaskStore = defineStore('task', () => {
   }
   function getAllTaskInProject() {
     axios
-      .get('http://localhost:3000/api/getAllTaskInProject/')
+      .get('https://sonnguyen48todoist.000webhostapp.com/api/getAllTaskInProject/')
       .then((response) => {
         allTaskInProject.value = response.data.taskList
       })
@@ -28,7 +28,7 @@ export const useTaskStore = defineStore('task', () => {
   }
   function getAllTaskInSection() {
     axios
-      .get('http://localhost:3000/api/getAllTaskInSection/')
+      .get('https://sonnguyen48todoist.000webhostapp.com/api/getAllTaskInSection/')
       .then((res) => {
         allTaskInSection.value = res.data.taskList
       })

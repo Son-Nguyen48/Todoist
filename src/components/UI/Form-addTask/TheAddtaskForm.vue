@@ -223,8 +223,8 @@ if (props.task) {
 }
 let actionLink = ref('')
 actionLink.value = props.idProject
-  ? 'http://localhost:3000/api/addTaskInProject'
-  : 'http://localhost:3000/api/addTaskInSection'
+  ? 'https://sonnguyen48todoist.000webhostapp.com/api/addTaskInProject'
+  : 'https://sonnguyen48todoist.000webhostapp.com/api/addTaskInSection'
 // console.log('actionLink: ', actionLink)
 
 // Close form
@@ -274,7 +274,7 @@ const editTask = () => {
   if (description.value !== props.task.description)
     dataEditForm.value['description'] = description.value
   axios
-    .patch('http://localhost:3000/api/updateTask', dataEditForm.value)
+    .patch('https://sonnguyen48todoist.000webhostapp.com/api/updateTask', dataEditForm.value)
     .then((res) => {
       console.log(res)
       const resultAfterChange = []
