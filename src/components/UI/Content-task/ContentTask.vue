@@ -58,7 +58,7 @@
             <span class="text-[12px] text-red-400">{{ task.dueDate }}</span>
           </div>
         </div>
-        <div class="goal_control ml-auto hidden items-center gap-2">
+        <div class="goal_control ml-auto hidden items-center gap-2 mr-5">
           <!-- Edit task button  -->
 
           <button @click.prevent="openEditForm" class="hover:bg-[#f5f5f5] rounded-md p-0.5">
@@ -543,11 +543,51 @@
       :task="task"
     />
   </div>
-  <div
-    v-if="isDeleteDialogOpen"
-    @click="isDeleteDialogOpen = false"
-    class="h-screen w-screen bg-slate-300 opacity-60 fixed top-0 left-0 z-[100]"
-  ></div>
+  <div v-if="isDeleteDialogOpen">
+    <div class="w-[450px] h-[200px] border-[1px] bg-white rounded-md px-4 py-2 fixed z-[100]">
+      <div class="flex items-center">
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+            <path
+              fill="currentColor"
+              d="M12 3a9 9 0 110 18 9 9 0 010-18zm0 1a8 8 0 100 16 8 8 0 000-16zm.5 6a.5.5 0 01.5.5V15h1a.5.5 0 110 1h-3a.5.5 0 110-1h1v-4h-1a.5.5 0 110-1h1.5zm-.16-2.68a.84.84 0 110 1.68.84.84 0 010-1.68z"
+            ></path>
+          </svg>
+        </span>
+        <button class="hover:bg-[#e5e5e5] p-1 rounded-md ml-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+            <path
+              fill="currentColor"
+              d="M5.146 5.146a.5.5 0 0 1 .708 0L12 11.293l6.146-6.147a.5.5 0 0 1 .638-.057l.07.057a.5.5 0 0 1 0 .708L12.707 12l6.147 6.146a.5.5 0 0 1 .057.638l-.057.07a.5.5 0 0 1-.708 0L12 12.707l-6.146 6.147a.5.5 0 0 1-.638.057l-.07-.057a.5.5 0 0 1 0-.708L11.293 12 5.146 5.854a.5.5 0 0 1-.057-.638z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <p class="py-5">
+        Are you sure you want to delete <strong>{{ task.title }}</strong
+        >!?
+      </p>
+
+      <div class="flex justify-end w-full mt-12 gap-3">
+        <button
+          @click="isDeleteDialogOpen = false"
+          class="font-medium text-[14px] py-1.5 px-3 rounded-md bg-[#f5f5f5] hover:bg-[#e5e5e5]"
+        >
+          Cancel
+        </button>
+        <button
+          @click="deleteTask(task.id)"
+          class="font-medium text-[14px] text-white py-1.5 px-3 rounded-md bg-[#dc4c36] hover:bg-[#B03D32]"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+    <div
+      @click="isDeleteDialogOpen = false"
+      class="h-screen w-screen bg-slate-300 opacity-60 fixed top-0 left-0 z-[99]"
+    ></div>
+  </div>
 </template>
 
 <script setup>
@@ -576,7 +616,7 @@ const priorityText = {
   4: ' text-[#000000]'
 }
 
-const setPriorityEmit = defineEmits(['changePriority'])
+const setPriorityEmit = defineEmits(['changePriority', 'deleteTask'])
 
 const setPriority = (priority, taskId) => {
   console.log('Here')
@@ -607,6 +647,11 @@ const closeAddtaskForm = (data) => {
   // }
   isEditFormOpen.value = data.isAddFormOpen
   console.log('isEditFormOpen: ', isEditFormOpen.value)
+}
+
+const deleteTask = (id) => {
+  setPriorityEmit('deleteTask', { id: id })
+  isDeleteDialogOpen.value = false
 }
 </script>
 
