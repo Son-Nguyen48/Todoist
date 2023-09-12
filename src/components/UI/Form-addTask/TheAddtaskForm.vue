@@ -280,7 +280,7 @@ const editTask = () => {
           resultAfterChange[`${element}`] = res.data.data[`${element}`]
         }
       }
-      const zone = res.data.result?.project_id ? 'project' : 'section'
+      const zone = res.data.result?.project_id ? 'project' : `section_${res.data.result.section_id}`
       taskStore.updateTask(res.data.result.id, resultAfterChange, zone)
     })
     .catch((e) => console.log(e))
