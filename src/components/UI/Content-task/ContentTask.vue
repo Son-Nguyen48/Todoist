@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="flex gap-2 py-3">
+  <div ref="target">
+    <div class="flex gap-2 py-3" v-if="!isEditFormOpen">
       <!-- Button drag and drop  -->
       <button
         class="hover:bg-[#f5f5f5] hover:cursor-move rounded-md hidden absolute -left-7 drag_button"
@@ -135,7 +135,9 @@
       >
         <ul class="w-full">
           <li class="py-1">
-            <div class="flex w-full px-3 py-1 hover:bg-[#f5f5f5] rounded-md">
+            <!-- Add task Above Button  -->
+
+            <button class="flex w-full px-3 py-1 hover:bg-[#f5f5f5] rounded-md">
               <div class="flex gap-1">
                 <span>
                   <svg width="24" height="24" class="text-[#898989]">
@@ -147,8 +149,11 @@
                 </span>
                 <span class="text-[14px] text-[black]">Add task above</span>
               </div>
-            </div>
-            <div class="flex w-full px-3 py-1 hover:bg-[#f5f5f5] rounded-md">
+            </button>
+
+            <!-- Add task Blow Button  -->
+
+            <button class="flex w-full px-3 py-1 hover:bg-[#f5f5f5] rounded-md">
               <div class="flex gap-1">
                 <span>
                   <svg width="24" height="24" class="text-[#898989]">
@@ -160,8 +165,14 @@
                 </span>
                 <span class="text-[14px] text-[black]">Add task below</span>
               </div>
-            </div>
-            <div class="flex w-full items-center px-3 py-1 hover:bg-[#f5f5f5] rounded-md">
+            </button>
+
+            <!-- Edit task button  -->
+
+            <button
+              @click.prevent="openEditForm"
+              class="flex w-full items-center px-3 py-1 hover:bg-[#f5f5f5] rounded-md"
+            >
               <div class="flex gap-1">
                 <span>
                   <svg width="24" height="24" class="text-[#898989]">
@@ -182,10 +193,13 @@
               <div class="ml-auto">
                 <span class="text-[14px] text-[grey]"> Ctrl E </span>
               </div>
-            </div>
+            </button>
           </li>
           <hr />
+
           <li class="py-1">
+            <!-- Edit due date  -->
+
             <div class="flex w-full items-center px-3 py-1">
               <span class="text-[12px]">Due date</span>
               <span class="ml-auto text-[14px]">T</span>
@@ -282,6 +296,9 @@
                 </svg>
               </button>
             </div>
+
+            <!-- Edit priority  -->
+
             <div class="flex w-full items-center px-3 py-1">
               <span class="text-[12px]">Priority</span>
               <span class="ml-auto text-[14px]">Y</span>
@@ -368,7 +385,11 @@
               </button>
             </div>
           </li>
+
           <hr />
+
+          <!-- Reminder Pro option button  -->
+
           <li class="py-1">
             <div class="flex w-full px-3 py-1 hover:bg-[#f5f5f5] rounded-md">
               <button class="w-full flex gap-1 items-center rounded-md hover:bg-[#f5f5f5]">
@@ -385,9 +406,13 @@
               </button>
             </div>
           </li>
+
           <hr />
+
           <li class="py-1">
-            <div class="flex w-full items-center px-3 py-1 hover:bg-[#f5f5f5] rounded-md">
+            <!-- Move to Project button  -->
+
+            <button class="flex w-full items-center px-3 py-1 hover:bg-[#f5f5f5] rounded-md">
               <div class="flex gap-1">
                 <span>
                   <svg width="24" height="24" class="text-[#898989]">
@@ -405,8 +430,11 @@
               <div class="ml-auto">
                 <span class="text-[12px]">V</span>
               </div>
-            </div>
-            <div class="flex w-full px-3 py-1 hover:bg-[#f5f5f5] rounded-md">
+            </button>
+
+            <!-- Duplycate button  -->
+
+            <button class="flex w-full px-3 py-1 hover:bg-[#f5f5f5] rounded-md">
               <div class="flex gap-1">
                 <span>
                   <svg
@@ -427,8 +455,11 @@
                 </span>
                 <span class="text-[14px] text-[#000000]">Duplicate</span>
               </div>
-            </div>
-            <div class="flex w-full px-3 py-1 hover:bg-[#f5f5f5] rounded-md">
+            </button>
+
+            <!-- Copy link to task  -->
+
+            <button class="flex w-full px-3 py-1 hover:bg-[#f5f5f5] rounded-md">
               <div class="flex gap-1">
                 <span>
                   <svg
@@ -460,11 +491,17 @@
                 </span>
                 <span class="text-[12px] text-[#898989]">Ctrl</span>
               </div>
-            </div>
+            </button>
           </li>
+
           <hr />
+
           <li class="py-1">
-            <div class="flex w-full px-3 py-1 hover:bg-[#f5f5f5] rounded-md">
+            <!-- Delete task button  -->
+            <button
+              @click="isDeleteDialogOpen = true"
+              class="flex w-full px-3 py-1 hover:bg-[#f5f5f5] rounded-md"
+            >
               <div class="flex gap-1">
                 <span>
                   <svg
@@ -495,17 +532,22 @@
                 </span>
                 <span class="text-[12px] text-[#898989]">Delete</span>
               </div>
-            </div>
+            </button>
           </li>
         </ul>
       </div>
     </div>
     <TheAddtaskForm
-      @closeAddtaskForm="(val) => closeAddtaskForm(val, index)"
+      @closeAddtaskForm="(val) => closeAddtaskForm(val)"
       v-if="isEditFormOpen"
       :task="task"
     />
   </div>
+  <div
+    v-if="isDeleteDialogOpen"
+    @click="isDeleteDialogOpen = false"
+    class="h-screen w-screen bg-slate-300 opacity-60 fixed top-0 left-0 z-[100]"
+  ></div>
 </template>
 
 <script setup>
@@ -520,6 +562,7 @@ const isActionControlOpen = ref(false)
 const isEditFormOpen = ref(false)
 const props = defineProps(['task'])
 const task = props.task
+const isDeleteDialogOpen = ref(false)
 const priorityBorder = {
   1: 'border-[#D1453B] ',
   2: 'border-[#EB8909] ',
@@ -554,17 +597,16 @@ const setPriority = (priority, taskId) => {
 }
 const openEditForm = () => {
   isEditFormOpen.value = true
+  isActionControlOpen.value = false
 }
 
-const closeAddtaskForm = (data, index) => {
+const closeAddtaskForm = (data) => {
   // if (data.taskAddFrom === 'project') taskInProject.value = false
   // else {
   //   listSection.value[index].isOpenAddTask = false
   // }
   isEditFormOpen.value = data.isAddFormOpen
   console.log('isEditFormOpen: ', isEditFormOpen.value)
-  console.log(index)
-  console.log('data: ', data)
 }
 </script>
 

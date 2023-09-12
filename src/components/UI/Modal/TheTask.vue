@@ -127,7 +127,7 @@
           </div>
         </div>
         <!-- Button Add sub Task -->
-        <div class="pl-5 py-3">
+        <div class="pl-6 py-3">
           <button
             @click="isAddFormOpen = true"
             v-if="!isAddFormOpen"

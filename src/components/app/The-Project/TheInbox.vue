@@ -9,7 +9,7 @@
             :key="task.id"
             class="goal relative cursor-pointer before:content-[''] before:absolute before:-left-7 before:w-[50px] before:h-full"
           >
-            <ContentTask @changePriority="changePriority" :index="index" :task="task" />
+            <ContentTask @changePriority="changePriority" :task="task" />
             <hr />
           </li>
         </ul>
@@ -61,13 +61,13 @@
         </div>
         <ul>
           <li
-            v-for="(task, index) in taskListInSection.length !== 0
+            v-for="task in taskListInSection.length !== 0
               ? taskListInSection.filter((task) => task.section_id === section.id)
               : taskListInSection"
             :key="task.id"
             class="goal relative cursor-pointer before:content-[''] before:absolute before:-left-7 before:w-[50px] before:h-full"
           >
-            <ContentTask @changePriority="changePriority" :index="index" :task="task" />
+            <ContentTask @changePriority="changePriority" :task="task" />
             <hr />
           </li>
         </ul>
