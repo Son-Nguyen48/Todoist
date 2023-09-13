@@ -544,7 +544,9 @@
     />
   </div>
   <div v-if="isDeleteDialogOpen">
-    <div class="w-[450px] h-[200px] border-[1px] bg-white rounded-md px-4 py-2 fixed z-[100]">
+    <div
+      class="w-[450px] h-[200px] border-[1px] bg-white rounded-md px-4 py-2 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[100]"
+    >
       <div class="flex items-center">
         <span>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
@@ -568,7 +570,9 @@
         >!?
       </p>
 
-      <div class="flex justify-end w-full mt-12 gap-3">
+      <div
+        class="flex fixed top-0 left-0 transform -translate-x-[10px] translate-y-[100px] justify-end w-full mt-12 gap-3"
+      >
         <button
           @click="isDeleteDialogOpen = false"
           class="font-medium text-[14px] py-1.5 px-3 rounded-md bg-[#f5f5f5] hover:bg-[#e5e5e5]"
