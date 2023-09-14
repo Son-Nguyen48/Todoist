@@ -137,7 +137,11 @@
             <a class="text-[18px] font-bold" href="#">Continue with Apple</a>
           </li>
           <hr />
-          <form action="" class="flex flex-col gap-4">
+          <form
+            action="http://localhost:3000/api/register/"
+            method="POST"
+            class="flex flex-col gap-4"
+          >
             <div class="p-3 flex flex-col gap-2 border-[1px] rounded-xl">
               <label for="email">E-mail</label>
               <input
@@ -181,15 +185,15 @@
               </button>
             </div>
 
-            <div
+            <button
               class="py-3 px-6 bg-[#DE483A] rounded-xl text-center hover:bg-[#af4238] cursor-pointer transition ease-linear duration-300"
             >
               <input
-                class="text-white text-[18px] font-bold"
+                class="text-white text-[18px] font-bold cursor-pointer"
                 type="submit"
                 value="Register with your email"
               />
-            </div>
+            </button>
 
             <p class="text-center">
               By continuing with Google, Apple or an email address, you agree to the

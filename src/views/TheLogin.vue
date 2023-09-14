@@ -137,7 +137,7 @@
             <a class="text-[18px] font-bold" href="#">Continue with Apple</a>
           </li>
           <hr />
-          <form action="" class="flex flex-col gap-4">
+          <form action="http://localhost:3000/api/login/" method="POST" class="flex flex-col gap-4">
             <div class="p-3 flex flex-col gap-2 border-[1px] rounded-xl">
               <label for="email">E-mail</label>
               <input
@@ -181,11 +181,15 @@
               </button>
             </div>
 
-            <div
+            <button
               class="py-3 px-6 bg-[#DE483A] rounded-xl text-center hover:bg-[#af4238] cursor-pointer transition ease-linear duration-300"
             >
-              <input class="text-white text-[18px] font-bold" type="submit" value="Connection" />
-            </div>
+              <input
+                class="text-white text-[18px] font-bold cursor-pointer"
+                type="submit"
+                value="Connection"
+              />
+            </button>
 
             <p class="text-center">
               <a class="underline mb-4 inline-block" href="#">Forgot your password ?</a>
@@ -196,7 +200,8 @@
             </p>
             <hr />
             <p class="text-center">
-              You do not have an account ?<a class="underline" href="#">Subscribe</a>
+              You do not have an account ?
+              <RouterLink class="underline" to="/register">Subscribe</RouterLink>
             </p>
           </form>
         </ul>
@@ -222,4 +227,6 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { RouterLink } from 'vue-router'
+</script>
