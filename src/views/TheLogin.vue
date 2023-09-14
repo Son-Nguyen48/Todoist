@@ -137,13 +137,14 @@
             <a class="text-[18px] font-bold" href="#">Continue with Apple</a>
           </li>
           <hr />
-          <form action="http://localhost:3000/api/login/" method="POST" class="flex flex-col gap-4">
+          <form class="flex flex-col gap-4">
             <div class="p-3 flex flex-col gap-2 border-[1px] rounded-xl">
               <label for="email">E-mail</label>
               <input
                 name="email"
                 type="email"
                 id="email"
+                v-model="email"
                 placeholder="Enter your email address.."
                 class="focus-visible:outline-none"
               />
@@ -154,6 +155,7 @@
                 name="password"
                 type="password"
                 id="password"
+                v-model="password"
                 placeholder="Enter your password.."
                 class="focus-visible:outline-none"
               />
@@ -182,6 +184,7 @@
             </div>
 
             <button
+              @click.prevent="login(formData)"
               class="py-3 px-6 bg-[#DE483A] rounded-xl text-center hover:bg-[#af4238] cursor-pointer transition ease-linear duration-300"
             >
               <input
@@ -228,5 +231,23 @@
 </template>
 
 <script setup>
+import axios from 'axios'
+import { computed, ref } from 'vue'
 import { RouterLink } from 'vue-router'
+const email = ref([])
+const password = ref([])
+const formData = computed(() => {
+  return {
+    email: email.value,
+    password: password.value
+  }
+})
+
+const login = (formData) => {
+  console.log(formData)
+  axios
+    .post('http://localhost:3000/api/login/', formData)
+    .then((res) => console.log(res))
+    .catch((e) => console.log(e))
+}
 </script>
