@@ -119,6 +119,7 @@ import { useRoute, RouterView } from 'vue-router'
 import { useTaskStore } from '../../../stores/task.js'
 import { useSectionStore } from '../../../stores/section.js'
 import { ref, computed } from 'vue'
+
 const route = useRoute()
 const taskStore = useTaskStore()
 const sectionStore = useSectionStore()
