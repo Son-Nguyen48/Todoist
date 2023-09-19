@@ -233,7 +233,7 @@
 <script setup>
 import axios from 'axios'
 import { computed, ref } from 'vue'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 const email = ref([])
 const password = ref([])
 const formData = computed(() => {
@@ -242,12 +242,15 @@ const formData = computed(() => {
     password: password.value
   }
 })
+const router = useRouter()
 
 const login = (formData) => {
-  console.log(formData)
   axios
     .post('http://localhost:3000/api/login/', formData)
-    .then((res) => console.log(res))
+    .then((res) => {
+      console.log(res)
+      router.push('/app/project/1')
+    })
     .catch((e) => console.log(e))
 }
 </script>
